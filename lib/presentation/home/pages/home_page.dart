@@ -116,33 +116,6 @@ class _HomePageState extends State<HomePage>
     _connectivitySubscription = Connectivity().onConnectivityChanged.listen(
       _handleConnectivity,
     );
-
-    // StreamSubscription<List<ConnectivityResult>> subscription = Connectivity()
-    //     .onConnectivityChanged
-    //     .listen((List<ConnectivityResult> connectivityResult) {
-    //   // Received changes in available connectivity types!
-    //   if (connectivityResult.contains(ConnectivityResult.mobile)) {
-    //     // Mobile network available.
-    //     context
-    //         .read<OnlineCheckerBloc>()
-    //         .add(const OnlineCheckerEvent.check(true));
-    //     _fetchOnlineProductOnce();
-    //   } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
-    //     // Wi-fi is available.
-    //     context
-    //         .read<OnlineCheckerBloc>()
-    //         .add(const OnlineCheckerEvent.check(true));
-    //     _fetchOnlineProductOnce();
-    //     // Note for Android:
-    //     // When both mobile and Wi-Fi are turned on system will return Wi-Fi only as active network type
-    //   } else {
-    //     // Neither mobile network nor Wi-fi available.
-    //     context
-    //         .read<OnlineCheckerBloc>()
-    //         .add(const OnlineCheckerEvent.check(false));
-
-    //   }
-    // });
   }
 
   void _handleConnectivity(List<ConnectivityResult> list) {
@@ -158,11 +131,14 @@ class _HomePageState extends State<HomePage>
       context.read<BusinessSettingBloc>().add(
         const BusinessSettingEvent.getBusinessSetting(),
       );
-      // context.read<CategoryBloc>().add(const CategoryEvent.getCategories());
-      // context.read<ProductBloc>().add(ProductEvent.getProducts());
 
       // hanya sinkron produk & kategori sekali
-      if (!_hasFetchedOnlineData) _fetchOnlineProductOnce();
+      if (!_hasFetchedOnlineData) {
+        _fetchOnlineProductOnce();
+      } else {
+        context.read<CategoryBloc>().add(const CategoryEvent.getCategories());
+        context.read<ProductBloc>().add(ProductEvent.getProducts());
+      }
     } else {
       // ambil business setting dari SQLite
       context.read<BusinessSettingLocalBloc>().add(

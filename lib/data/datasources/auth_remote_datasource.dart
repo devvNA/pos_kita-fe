@@ -1,31 +1,35 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:pos_kita/core/constants/variables.dart';
+import 'package:pos_kita/core/network/network.dart';
 import 'package:pos_kita/data/datasources/auth_local_datasource.dart';
 import 'package:pos_kita/data/models/responses/auth_response_model.dart';
 import 'package:pos_kita/data/models/responses/myoutlet_response_model.dart';
-import 'package:http/http.dart' as http;
 
 class AuthRemoteDataSource {
+  final AuthLocalDatasource _authLocalDatasource;
+
+  static final HttpClient _client = HttpClient(
+    baseUrl: Variables.baseUrl,
+    timeout: const Duration(seconds: 15),
+    maxRetries: 2,
+  );
+
+  AuthRemoteDataSource({AuthLocalDatasource? authLocalDatasource})
+    : _authLocalDatasource = authLocalDatasource ?? AuthLocalDatasource();
+
   Future<Either<String, AuthResponseModel>> login(
     String email,
     String password,
   ) async {
-    final response = await http.post(
-      Uri.parse('${Variables.baseUrl}/api/login'),
-      body: jsonEncode({'email': email, 'password': password}),
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json',
-      },
+    return _wrapRequest(
+      () => _client.post<AuthResponseModel>(
+        '/api/login',
+        body: {'email': email, 'password': password},
+        fromJson: (json) =>
+            AuthResponseModel.fromMap(json as Map<String, dynamic>),
+      ),
+      fallbackMessage: 'Login gagal.',
     );
-
-    if (response.statusCode == 200) {
-      return Right(AuthResponseModel.fromMap(jsonDecode(response.body)));
-    } else {
-      return Left(response.body);
-    }
   }
 
   //register
@@ -35,84 +39,95 @@ class AuthRemoteDataSource {
     String email,
     String password,
   ) async {
-    final response = await http.post(
-      Uri.parse('${Variables.baseUrl}/api/register'),
-      body: jsonEncode({
-        'name': name,
-        'business_name': name,
-        'email': email,
-        'password': password,
-        'address': address,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json',
-      },
+    return _wrapRequest(
+      () => _client.post<AuthResponseModel>(
+        '/api/register',
+        body: {
+          'name': name,
+          'business_name': name,
+          'email': email,
+          'password': password,
+          'address': address,
+        },
+        fromJson: (json) =>
+            AuthResponseModel.fromMap(json as Map<String, dynamic>),
+      ),
+      fallbackMessage: 'Registrasi gagal.',
     );
-
-    if (response.statusCode == 201) {
-      return Right(AuthResponseModel.fromMap(jsonDecode(response.body)));
-    } else {
-      return Left(response.body);
-    }
   }
 
   //me
   Future<Either<String, AuthResponseModel>> me(String token) async {
-    final response = await http.get(
-      Uri.parse('${Variables.baseUrl}/api/me'),
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
+    return _wrapRequest(
+      () => _client.get<AuthResponseModel>(
+        '/api/me',
+        headers: {'Authorization': 'Bearer $token'},
+        fromJson: (json) =>
+            AuthResponseModel.fromMap(json as Map<String, dynamic>),
+      ),
+      fallbackMessage: 'Gagal mengambil data profil.',
     );
-
-    if (response.statusCode == 200) {
-      return Right(AuthResponseModel.fromMap(jsonDecode(response.body)));
-    } else {
-      return Left(response.body);
-    }
   }
 
   //myoutlet
   Future<Either<String, MyoutletResponseModel>> myoutlet() async {
-    final authData = await AuthLocalDatasource().getUserData();
-    final token = authData!.accessToken;
-    final response = await http.get(
-      Uri.parse('${Variables.baseUrl}/api/my-outlet'),
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-    );
+    final headers = await _authorizedHeaders();
 
-    if (response.statusCode == 200) {
-      print(response.body);
-      return Right(MyoutletResponseModel.fromMap(jsonDecode(response.body)));
-    } else {
-      return Left(response.body);
-    }
+    return _wrapRequest(
+      () => _client.get<MyoutletResponseModel>(
+        '/api/my-outlet',
+        headers: headers,
+        fromJson: (json) =>
+            MyoutletResponseModel.fromMap(json as Map<String, dynamic>),
+      ),
+      fallbackMessage: 'Gagal mengambil data outlet.',
+    );
   }
 
   //logout
   Future<Either<String, String>> logout() async {
-    final authData = await AuthLocalDatasource().getUserData();
-    final token = authData!.accessToken;
-    final response = await http.post(
-      Uri.parse('${Variables.baseUrl}/api/logout'),
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-    );
+    try {
+      final response = await _client.post<void>(
+        '/api/logout',
+        headers: await _authorizedHeaders(),
+      );
+      if (response.success) {
+        return const Right('Logout success');
+      }
+      return Left(response.message ?? 'Logout gagal.');
+    } on ApiException catch (e) {
+      return Left(e.message);
+    } catch (_) {
+      return const Left('Terjadi kesalahan tidak terduga.');
+    }
+  }
 
-    if (response.statusCode == 200) {
-      return Right('Logout success');
-    } else {
-      return Left(response.body);
+  Future<Map<String, String>> _authorizedHeaders() async {
+    final token = await _authLocalDatasource.getToken();
+    if (token == null || token.isEmpty) {
+      return const {};
+    }
+
+    return {'Authorization': 'Bearer $token'};
+  }
+
+  Future<Either<String, T>> _wrapRequest<T>(
+    Future<ApiResponse<T>> Function() request, {
+    required String fallbackMessage,
+  }) async {
+    try {
+      final response = await request();
+      final data = response.data;
+
+      if (response.success && data != null) {
+        return Right(data);
+      }
+
+      return Left(response.message ?? fallbackMessage);
+    } on ApiException catch (e) {
+      return Left(e.message);
+    } catch (_) {
+      return const Left('Terjadi kesalahan tidak terduga.');
     }
   }
 }

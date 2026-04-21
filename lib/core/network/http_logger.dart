@@ -9,10 +9,7 @@ class HttpLogger {
   final bool enabled;
   final LogLevel level;
 
-  const HttpLogger({
-    this.enabled = kDebugMode,
-    this.level = LogLevel.debug,
-  });
+  const HttpLogger({this.enabled = kDebugMode, this.level = LogLevel.debug});
 
   // ─── Request Logger ───────────────────────────────────────────────────────
 
@@ -66,13 +63,6 @@ class HttpLogger {
     buffer.writeln('\n╔════════════════ RESPONSE ═══════════════');
     buffer.writeln('║ $icon $statusCode | ${duration.inMilliseconds}ms | $url');
     buffer.writeln('╠─────────────────────────────────────────');
-
-    if (headers != null && headers.isNotEmpty) {
-      buffer.writeln('║ 📋 Headers:');
-      headers.forEach((key, value) {
-        buffer.writeln('║   $key: $value');
-      });
-    }
 
     if (body != null) {
       buffer.writeln('╠─────────────────────────────────────────');

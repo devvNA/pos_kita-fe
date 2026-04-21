@@ -1,60 +1,82 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:pos_kita/core/constants/variables.dart';
+import 'package:pos_kita/core/network/network.dart';
 import 'package:pos_kita/data/datasources/auth_local_datasource.dart';
 import 'package:pos_kita/data/models/requests/order_request_model.dart';
 import 'package:pos_kita/data/models/responses/transaction_response_model.dart';
-import 'package:http/http.dart' as http;
 
 class OrderRemoteDatasource {
+  final AuthLocalDatasource _authLocalDatasource;
+
+  static final HttpClient _client = HttpClient(
+    baseUrl: Variables.baseUrl,
+    timeout: const Duration(seconds: 15),
+    maxRetries: 2,
+  );
+
+  OrderRemoteDatasource({AuthLocalDatasource? authLocalDatasource})
+    : _authLocalDatasource = authLocalDatasource ?? AuthLocalDatasource();
+
   Future<Either<String, Transaction>> createOrder({
     required OrderRequestModel orderRequestModel,
   }) async {
-    final authData = await AuthLocalDatasource().getUserData();
-    final token = authData?.accessToken;
-
-    final response = await http.post(
-      Uri.parse('${Variables.baseUrl}/api/add-order'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer $token',
-        'Accept': 'application/json',
-      },
-      body: orderRequestModel.toJson(),
+    return _wrapRequest(
+      () async => _client.post<Transaction>(
+        '/api/add-order',
+        headers: await _authorizedHeaders(),
+        body: orderRequestModel.toMap(),
+        fromJson: (json) =>
+            Transaction.fromMap((json as Map<String, dynamic>)['data']),
+      ),
+      fallbackMessage: 'Gagal membuat order.',
     );
-
-    if (response.statusCode == 201) {
-      //from json key data
-      final data = jsonDecode(response.body)['data'];
-
-      return Right(Transaction.fromMap(data));
-    } else {
-      return Left('Failed');
-    }
   }
 
   //get order by outlet id
   Future<Either<String, TransactionResponseModel>> getOrderByOutletId() async {
-    final authData = await AuthLocalDatasource().getUserData();
-    final outletData = await AuthLocalDatasource().getOutletData();
-    final token = authData?.accessToken;
+    final outletData = await _authLocalDatasource.getOutletData();
 
-    final response = await http.get(
-      Uri.parse(
-        '${Variables.baseUrl}/api/get-orders-by-outlet/${outletData.id}',
+    if (outletData.id == 0) {
+      return const Left('Outlet tidak ditemukan.');
+    }
+
+    return _wrapRequest(
+      () async => _client.get<TransactionResponseModel>(
+        '/api/get-orders-by-outlet/${outletData.id}',
+        headers: await _authorizedHeaders(),
+        fromJson: (json) =>
+            TransactionResponseModel.fromMap(json as Map<String, dynamic>),
       ),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-        'Authorization': 'Bearer $token',
-        'Accept': 'application/json',
-      },
+      fallbackMessage: 'Gagal mengambil data transaksi.',
     );
+  }
 
-    if (response.statusCode == 200) {
-      return Right(TransactionResponseModel.fromJson(response.body));
-    } else {
-      return Left('Failed');
+  Future<Map<String, String>> _authorizedHeaders() async {
+    final token = await _authLocalDatasource.getToken();
+    if (token == null || token.isEmpty) {
+      return const {};
+    }
+
+    return {'Authorization': 'Bearer $token'};
+  }
+
+  Future<Either<String, T>> _wrapRequest<T>(
+    Future<ApiResponse<T>> Function() request, {
+    required String fallbackMessage,
+  }) async {
+    try {
+      final response = await request();
+      final data = response.data;
+
+      if (response.success && data != null) {
+        return Right(data);
+      }
+
+      return Left(response.message ?? fallbackMessage);
+    } on ApiException catch (e) {
+      return Left(e.message);
+    } catch (_) {
+      return const Left('Terjadi kesalahan tidak terduga.');
     }
   }
 }
