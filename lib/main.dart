@@ -1,3 +1,5 @@
+import 'package:device_preview_plus/device_preview_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,7 +62,15 @@ void main() {
     ),
   );
 
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const MyApp(),
+      isToolbarVisible: true,
+      availableLocales: const [Locale('id', 'ID')],
+      backgroundColor: Colors.white,
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

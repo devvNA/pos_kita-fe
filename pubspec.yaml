@@ -54,6 +54,7 @@ dependencies:
   shared_preferences: ^2.5.4
   sqflite: ^2.4.2
   cached_network_image: ^3.4.1
+  device_preview_plus: ^2.3.2
 
 dev_dependencies:
   build_runner: ^2.4.14
@@ -84,7 +85,7 @@ flutter:
     - assets/images/products/
     - assets/images/logo/
     - assets/fonts/noto-sans.ttf
-    
+
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
