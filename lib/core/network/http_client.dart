@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:http/browser_client.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_exception.dart';
@@ -32,13 +33,19 @@ class HttpClient {
     this.tokenProvider,
     Map<String, String>? defaultHeaders,
     http.Client? client,
-  })  : logger = logger ?? const HttpLogger(),
-        defaultHeaders = defaultHeaders ??
-            {
-              HttpHeaders.contentTypeHeader: ContentType.json.value,
-              HttpHeaders.acceptHeader: ContentType.json.value,
-            },
-        _client = client ?? http.Client();
+    bool withCredentials = true,
+  }) : logger = logger ?? const HttpLogger(),
+       defaultHeaders =
+           defaultHeaders ??
+           {
+             HttpHeaders.contentTypeHeader: ContentType.json.value,
+             HttpHeaders.acceptHeader: ContentType.json.value,
+           } {
+    _client = client ?? http.Client();
+    if (withCredentials && _client is BrowserClient) {
+      (_client).withCredentials = true;
+    }
+  }
 
   // ─── Public Methods ───────────────────────────────────────────────────────
 
@@ -157,14 +164,18 @@ class HttpClient {
     final stopwatch = Stopwatch()..start();
 
     try {
-      final response = await _sendRequest(
-        method: method,
-        uri: uri,
-        headers: mergedHeaders,
-        body: encodedBody,
-      ).timeout(timeout, onTimeout: () {
-        throw const NetworkException(message: 'Request timed out.');
-      });
+      final response =
+          await _sendRequest(
+            method: method,
+            uri: uri,
+            headers: mergedHeaders,
+            body: encodedBody,
+          ).timeout(
+            timeout,
+            onTimeout: () {
+              throw const NetworkException(message: 'Request timed out.');
+            },
+          );
 
       stopwatch.stop();
 
@@ -275,7 +286,9 @@ class HttpClient {
   }
 
   Uri _buildUri(String path, Map<String, String>? queryParams) {
-    final cleanBase = baseUrl.endsWith('/') ? baseUrl.substring(0, baseUrl.length - 1) : baseUrl;
+    final cleanBase = baseUrl.endsWith('/')
+        ? baseUrl.substring(0, baseUrl.length - 1)
+        : baseUrl;
     final cleanPath = path.startsWith('/') ? path : '/$path';
     final uri = Uri.parse('$cleanBase$cleanPath');
     return queryParams != null && queryParams.isNotEmpty
