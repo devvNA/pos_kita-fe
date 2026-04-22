@@ -19,14 +19,18 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _hasTriggeredInitialSync = false;
 
   void _triggerInitialSync() {
+    if (_hasTriggeredInitialSync) return;
+
     final isOnline = context.read<OnlineCheckerBloc>().state.maybeWhen(
       online: () => true,
       orElse: () => false,
     );
 
     if (isOnline) {
+      _hasTriggeredInitialSync = true;
       context.read<SyncOrderBloc>().add(const SyncOrderEvent.syncAll());
     }
   }
@@ -51,9 +55,16 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage>
         BlocListener<OnlineCheckerBloc, OnlineCheckerState>(
           listener: (context, state) {
             state.maybeWhen(
-              online: () => context.read<SyncOrderBloc>().add(
-                const SyncOrderEvent.syncAll(),
-              ),
+              online: () {
+                if (_hasTriggeredInitialSync) return;
+                _hasTriggeredInitialSync = true;
+                context.read<SyncOrderBloc>().add(
+                  const SyncOrderEvent.syncAll(),
+                );
+              },
+              offline: () {
+                _hasTriggeredInitialSync = false;
+              },
               orElse: () {},
             );
           },
@@ -100,8 +111,12 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage>
                 ),
                 labelColor: AppColors.primary,
                 unselectedLabelColor: AppColors.white,
-                labelStyle: AppTypography.labelMedium.copyWith(fontWeight: FontWeight.w700),
-                unselectedLabelStyle: AppTypography.labelMedium.copyWith(fontWeight: FontWeight.w500),
+                labelStyle: AppTypography.labelMedium.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+                unselectedLabelStyle: AppTypography.labelMedium.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
                 tabs: const [
                   Tab(text: 'OFFLINE'),
                   Tab(text: 'ONLINE'),
@@ -112,10 +127,7 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage>
         ),
         body: TabBarView(
           controller: _tabController,
-          children: const [
-            TransactionOfflinePage(),
-            TransactionPage(),
-          ],
+          children: const [TransactionOfflinePage(), TransactionPage()],
         ),
         floatingActionButton: BlocBuilder<SyncOrderBloc, SyncOrderState>(
           builder: (context, state) => state.maybeWhen(
@@ -152,7 +164,7 @@ class _SyncIndicator extends StatelessWidget {
         ),
         AppSpacing.hGapSm,
         Text(
-          text, 
+          text,
           style: AppTypography.labelMedium.copyWith(color: AppColors.white),
         ),
       ],

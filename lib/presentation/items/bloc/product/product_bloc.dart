@@ -55,19 +55,23 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       emit(ProductState.loading());
       final result = await productRemoteDataSource.getProducts();
 
-      result.fold(
-        (l) {
+      await result.fold(
+        (l) async {
           emit(_Error(l));
         },
-        (r) {
+        (r) async {
           products = r.data ?? [];
-          dbLocalDatasource.removeAllProduct();
-          dbLocalDatasource.insertAllProduct(products);
-          // for (final product in products) {
-          //   await dbLocalDatasource.insertProduct(product);
-          // }
+          final stocks = products
+              .expand((product) => product.stocks ?? const <Stock>[])
+              .toList();
+
+          await dbLocalDatasource.removeAllStock();
+          await dbLocalDatasource.removeAllProduct();
+          await dbLocalDatasource.insertAllProduct(products);
+          await dbLocalDatasource.insertAllStock(stocks);
+
+          if (emit.isDone) return;
           emit(_Success(products));
-          // emit(_Success(r.data ?? []));
         },
       );
     });

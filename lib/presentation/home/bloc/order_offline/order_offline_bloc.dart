@@ -41,6 +41,7 @@ class OrderOfflineBloc extends Bloc<OrderOfflineEvent, OrderOfflineState> {
           status: 'pending',
           cashierId: userData?.data?.id ?? 0,
           createdAt: DateTime.now(),
+          isSync: 0,
           items: event.orderRequestModel.items.map((p) {
             return Item(
               productId: p.product.id,
@@ -53,6 +54,17 @@ class OrderOfflineBloc extends Bloc<OrderOfflineEvent, OrderOfflineState> {
         );
 
         await DBLocalDatasource.instance.saveOrder(transaction);
+        for (final item in transaction.items ?? <Item>[]) {
+          if (item.productId == null || item.quantity == null) {
+            continue;
+          }
+
+          await DBLocalDatasource.instance.reduceProductStock(
+            productId: item.productId!,
+            outletId: event.orderRequestModel.outletId,
+            quantity: item.quantity!,
+          );
+        }
         emit(OrderOfflineState.success(transaction));
       } catch (e) {
         emit(OrderOfflineState.error(e.toString()));

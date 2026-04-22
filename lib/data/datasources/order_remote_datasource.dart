@@ -74,9 +74,26 @@ class OrderRemoteDatasource {
 
       return Left(response.message ?? fallbackMessage);
     } on ApiException catch (e) {
-      return Left(e.message);
+      return Left(_normalizeErrorMessage(e.message, fallbackMessage));
     } catch (_) {
       return const Left('Terjadi kesalahan tidak terduga.');
     }
+  }
+
+  String _normalizeErrorMessage(String? message, String fallbackMessage) {
+    final normalizedMessage = message?.trim();
+    if (normalizedMessage == null || normalizedMessage.isEmpty) {
+      return fallbackMessage;
+    }
+
+    final lowerCasedMessage = normalizedMessage.toLowerCase();
+    if (lowerCasedMessage.contains('failed host lookup') ||
+        lowerCasedMessage.contains('socketexception') ||
+        lowerCasedMessage.contains('connection refused') ||
+        lowerCasedMessage.contains('network is unreachable')) {
+      return 'Tidak dapat terhubung ke server. Periksa koneksi internet Anda.';
+    }
+
+    return normalizedMessage;
   }
 }

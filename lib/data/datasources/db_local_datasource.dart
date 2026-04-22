@@ -320,7 +320,8 @@ class DBLocalDatasource {
     final db = await instance.database;
     final result = await db.query(tableProducts);
 
-    return result.map((e) => Product.fromMap(e)).toList();
+    final products = result.map((e) => Product.fromMap(e)).toList();
+    return _attachStocksToProducts(products);
 
     // final db = await instance.database;
 
@@ -386,7 +387,91 @@ class DBLocalDatasource {
       orderBy: 'name ASC', // opsional: urutkan nama biar UI rapi
     );
 
-    return rows.map((e) => Product.fromMap(e)).toList();
+    final products = rows.map((e) => Product.fromMap(e)).toList();
+    return _attachStocksToProducts(products);
+  }
+
+  Future<List<Stock>> getAllStock() async {
+    final db = await instance.database;
+    final rows = await db.query(tableStocks);
+    return rows.map((e) => Stock.fromMap(e)).toList();
+  }
+
+  Future<void> reduceProductStock({
+    required int productId,
+    required int outletId,
+    required int quantity,
+  }) async {
+    final db = await instance.database;
+
+    final stockRows = await db.query(
+      tableStocks,
+      where: 'product_id = ? AND outlet_id = ?',
+      whereArgs: [productId, outletId],
+      limit: 1,
+    );
+
+    if (stockRows.isNotEmpty) {
+      final currentQuantity = (stockRows.first['quantity'] as int?) ?? 0;
+      final updatedQuantity = currentQuantity - quantity;
+
+      await db.update(
+        tableStocks,
+        {'quantity': updatedQuantity < 0 ? 0 : updatedQuantity},
+        where: 'id = ?',
+        whereArgs: [stockRows.first['id']],
+      );
+    }
+
+    final productRows = await db.query(
+      tableProducts,
+      where: 'product_id = ?',
+      whereArgs: [productId],
+      limit: 1,
+    );
+
+    if (productRows.isNotEmpty) {
+      final currentStock = (productRows.first['stock'] as int?) ?? 0;
+      final updatedStock = currentStock - quantity;
+
+      await db.update(
+        tableProducts,
+        {'stock': updatedStock < 0 ? 0 : updatedStock},
+        where: 'id = ?',
+        whereArgs: [productRows.first['id']],
+      );
+    }
+  }
+
+  Future<List<Product>> _attachStocksToProducts(List<Product> products) async {
+    final allStocks = await getAllStock();
+
+    return products.map((product) {
+      final resolvedProductId = product.productId ?? product.id;
+      final relatedStocks = allStocks
+          .where((stock) => stock.productId == resolvedProductId)
+          .toList();
+
+      return Product(
+        id: product.id,
+        productId: product.productId,
+        name: product.name,
+        categoryId: product.categoryId,
+        businessId: product.businessId,
+        description: product.description,
+        image: product.image,
+        color: product.color,
+        price: product.price,
+        cost: product.cost,
+        stock: product.stock,
+        barcode: product.barcode,
+        sku: product.sku,
+        createdAt: product.createdAt,
+        updatedAt: product.updatedAt,
+        category: product.category,
+        stocks: relatedStocks,
+      );
+    }).toList();
   }
 
   // Future<void> insertAllProduct(List<Product> products) async {
@@ -588,9 +673,20 @@ class DBLocalDatasource {
 
   Future<void> insertAllStock(List<Stock> stocks) async {
     final db = await instance.database;
-    for (var stock in stocks) {
-      await db.insert(tableStocks, stock.toBackUpMap());
+    final batch = db.batch();
+
+    for (final stock in stocks) {
+      batch.insert(tableStocks, {
+        'stock_id': stock.id,
+        'product_id': stock.productId,
+        'outlet_id': stock.outletId,
+        'quantity': stock.quantity,
+        'created_at': stock.createdAt?.toIso8601String(),
+        'updated_at': stock.updatedAt?.toIso8601String(),
+      });
     }
+
+    await batch.commit(noResult: true);
   }
 
   Future<void> removeAllStock() async {

@@ -14,11 +14,13 @@ class TransactionPage extends StatefulWidget {
 }
 
 class _TransactionPageState extends State<TransactionPage> {
+  void _loadTransactions() {
+    context.read<TransactionBloc>().add(const TransactionEvent.getTransactions());
+  }
+
   @override
   void initState() {
-    context.read<TransactionBloc>().add(
-      const TransactionEvent.getTransactions(),
-    );
+    _loadTransactions();
     super.initState();
   }
 
@@ -31,10 +33,50 @@ class _TransactionPageState extends State<TransactionPage> {
           return state.maybeWhen(
             loading: () => const Center(child: CircularProgressIndicator()),
             error: (message) => Center(
-              child: Text(
-                message,
-                style: AppTypography.bodyMedium.copyWith(
-                  color: AppColors.error,
+              child: Padding(
+                padding: AppSpacing.screenPadding,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 72,
+                      height: 72,
+                      decoration: BoxDecoration(
+                        color: AppColors.error50,
+                        borderRadius: BorderRadius.circular(AppRadius.full),
+                      ),
+                      child: const Icon(
+                        Icons.wifi_off_rounded,
+                        color: AppColors.error,
+                        size: 36,
+                      ),
+                    ),
+                    AppSpacing.vGapLg,
+                    Text(
+                      'Gagal memuat transaksi online',
+                      textAlign: TextAlign.center,
+                      style: AppTypography.titleMedium.copyWith(
+                        color: AppColors.textPrimary,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    AppSpacing.vGapSm,
+                    Text(
+                      message,
+                      textAlign: TextAlign.center,
+                      style: AppTypography.bodyMedium.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                    AppSpacing.vGapLg,
+                    SizedBox(
+                      width: 180,
+                      child: AppButton.outlined(
+                        onPressed: _loadTransactions,
+                        label: 'Coba Lagi',
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

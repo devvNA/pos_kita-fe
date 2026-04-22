@@ -590,14 +590,14 @@ class _HomePageState extends State<HomePage>
                         );
                       },
                       offline: () {
-                        // offline, tetap cek stok tersimpan lokal
+                        // offline, tampilkan dan validasi stok lokal
                         return _buildProductCard(
                           filteredProducts[index],
                           buttonKey,
                           outletData,
                           taxs,
                           true,
-                          false,
+                          true,
                         );
                       },
                       online: () {
@@ -676,14 +676,14 @@ class _HomePageState extends State<HomePage>
                         );
                       },
                       offline: () {
-                        // offline, tetap cek stok tersimpan lokal
+                        // offline, tampilkan dan validasi stok lokal
                         return _buildProductCard(
                           filteredProducts[index],
                           buttonKey,
                           outletData,
                           taxs,
                           true,
-                          false,
+                          true,
                         );
                       },
                       online: () {
