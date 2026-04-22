@@ -240,8 +240,7 @@ class _AddPrinterPageState extends State<AddPrinterPage> {
                                   prefixIcon: const Icon(Icons.print_outlined),
                                   textInputAction: TextInputAction.next,
                                   validator: (value) {
-                                    if (value == null ||
-                                        value.trim().isEmpty) {
+                                    if (value == null || value.trim().isEmpty) {
                                       return 'Nama printer tidak boleh kosong';
                                     }
                                     return null;
@@ -277,14 +276,14 @@ class _AddPrinterPageState extends State<AddPrinterPage> {
                                   icon: _showBluetoothField
                                       ? Icons.bluetooth_rounded
                                       : _showIpField
-                                          ? Icons.language_rounded
-                                          : Icons.usb_rounded,
+                                      ? Icons.language_rounded
+                                      : Icons.usb_rounded,
                                   title: 'Koneksi',
                                   subtitle: _showBluetoothField
                                       ? 'Pilih printer bluetooth yang sudah dipasangkan.'
                                       : _showIpField
-                                          ? 'Masukkan alamat IP printer ethernet.'
-                                          : 'Hubungkan printer USB dari perangkat yang digunakan.',
+                                      ? 'Masukkan alamat IP printer ethernet.'
+                                      : 'Hubungkan printer USB dari perangkat yang digunakan.',
                                 ),
                                 AppSpacing.vGapLg,
                                 if (_showBluetoothField)
@@ -314,8 +313,7 @@ class _AddPrinterPageState extends State<AddPrinterPage> {
                                       ),
                                       AppSpacing.hGapMd,
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(top: 26),
+                                        padding: const EdgeInsets.only(top: 26),
                                         child: SizedBox(
                                           width: 120,
                                           child: AppButton.outlined(
@@ -331,8 +329,9 @@ class _AddPrinterPageState extends State<AddPrinterPage> {
                                     controller: _ipAddressController,
                                     label: 'IP Address',
                                     hint: 'Contoh: 192.168.1.10',
-                                    prefixIcon:
-                                        const Icon(Icons.language_rounded),
+                                    prefixIcon: const Icon(
+                                      Icons.language_rounded,
+                                    ),
                                     keyboardType: TextInputType.text,
                                     textInputAction: TextInputAction.next,
                                     validator: (value) {
@@ -396,20 +395,17 @@ class _AddPrinterPageState extends State<AddPrinterPage> {
                                     borderRadius: BorderRadius.circular(
                                       AppRadius.card,
                                     ),
-                                    border: Border.all(
-                                      color: AppColors.border,
-                                    ),
+                                    border: Border.all(color: AppColors.border),
                                   ),
                                   child: CheckboxListTile(
                                     value: _isDefault,
                                     activeColor: AppColors.primary,
                                     title: Text(
                                       'Jadikan printer default',
-                                      style:
-                                          AppTypography.bodyMedium.copyWith(
-                                            color: AppColors.textPrimary,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                      style: AppTypography.bodyMedium.copyWith(
+                                        color: AppColors.textPrimary,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                     subtitle: Text(
                                       'Printer ini akan diprioritaskan untuk proses cetak.',
@@ -417,10 +413,9 @@ class _AddPrinterPageState extends State<AddPrinterPage> {
                                         color: AppColors.textSecondary,
                                       ),
                                     ),
-                                    contentPadding:
-                                        const EdgeInsets.symmetric(
-                                          horizontal: 12,
-                                        ),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                    ),
                                     controlAffinity:
                                         ListTileControlAffinity.leading,
                                     onChanged: (value) {
@@ -571,9 +566,7 @@ class _InfoBanner extends StatelessWidget {
           Expanded(
             child: Text(
               message,
-              style: AppTypography.bodySmall.copyWith(
-                color: AppColors.info700,
-              ),
+              style: AppTypography.bodySmall.copyWith(color: AppColors.info700),
             ),
           ),
         ],

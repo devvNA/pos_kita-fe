@@ -84,7 +84,7 @@ class _AddTaxPageState extends State<AddTaxPage> {
               ),
               AppSpacing.vGapMd,
               DropdownButtonFormField<String>(
-                value: chargeType,
+                initialValue: chargeType,
                 style: AppTypography.bodyLarge.copyWith(
                   color: AppColors.textPrimary,
                 ),
@@ -113,7 +113,7 @@ class _AddTaxPageState extends State<AddTaxPage> {
               ),
               AppSpacing.vGapMd,
               DropdownButtonFormField<String>(
-                value: type,
+                initialValue: type,
                 style: AppTypography.bodyLarge.copyWith(
                   color: AppColors.textPrimary,
                 ),

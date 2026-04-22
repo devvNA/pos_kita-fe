@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pos_kita/core/design_system/tokens/colors.dart';
+import 'package:pos_kita/core/design_system/design_system.dart';
 import 'package:pos_kita/presentation/auth/bloc/register/register_bloc.dart';
 import 'package:pos_kita/presentation/auth/pages/login_page.dart';
 
@@ -16,14 +16,19 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _businessNameController = TextEditingController();
+  final _nameController = TextEditingController();
   final _businessAddressController = TextEditingController();
   bool _isAgree = false;
-  bool _isObscure = true;
+  bool _isLoading = false;
 
-  void _toggleObscure() {
-    setState(() {
-      _isObscure = !_isObscure;
-    });
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _businessNameController.dispose();
+    _nameController.dispose();
+    _businessAddressController.dispose();
+    super.dispose();
   }
 
   void _submit() {
@@ -31,10 +36,23 @@ class _RegisterPageState extends State<RegisterPage> {
       if (_isAgree) {
         context.read<RegisterBloc>().add(
           RegisterEvent.register(
+            name: _nameController.text,
             businessName: _businessNameController.text,
             businessAddress: _businessAddressController.text,
             email: _emailController.text,
             password: _passwordController.text,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Setujui syarat dan ketentuan terlebih dahulu'),
+            backgroundColor: AppColors.warning600,
+            behavior: SnackBarBehavior.floating,
+            margin: const EdgeInsets.all(16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppRadius.md),
+            ),
           ),
         );
       }
@@ -50,239 +68,357 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(Icons.arrow_back_ios, color: AppColors.white),
-        ),
-        title: const Text(
-          'Daftar',
-          style: TextStyle(
-            color: AppColors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 64),
-              Image.asset('assets/images/logo/poskita.png', width: 150),
-              SizedBox(height: 32),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TextFormField(
-                        style: TextStyle(color: AppColors.black),
-                        controller: _emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: 'Email',
-                          hintText: 'Masukkan email',
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Email tidak boleh kosong';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TextFormField(
-                        style: TextStyle(color: AppColors.black),
-                        obscureText: _isObscure,
-                        controller: _passwordController,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: 'Password',
-                          hintText: 'Masukkan password',
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              _toggleObscure();
-                            },
-                            icon: Icon(
-                              _isObscure
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                            ),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Password tidak boleh kosong';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TextFormField(
-                        style: TextStyle(color: AppColors.black),
-                        controller: _businessNameController,
-                        keyboardType: TextInputType.text,
-                        textCapitalization: TextCapitalization.words,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: 'Nama Bisnis',
-                          hintText: 'Masukkan nama bisnis',
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Nama bisnis tidak boleh kosong';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TextFormField(
-                        maxLines: 3,
-                        style: TextStyle(color: AppColors.black),
-                        controller: _businessAddressController,
-                        keyboardType: TextInputType.text,
-                        textCapitalization: TextCapitalization.words,
-                        textInputAction: TextInputAction.done,
-                        decoration: InputDecoration(
-                          labelText: 'Alamat Bisnis',
-                          hintText: 'Masukkan alamat bisnis',
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Alamat bisnis tidak boleh kosong';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    //checkbox untuk setuju
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: _isAgree,
-                          onChanged: (value) {
-                            _toggleAgree();
-                          },
-                        ),
-                        Expanded(
-                          child: Text(
-                            'Saya setuju dengan syarat dan ketentuan.',
-                            maxLines: 2,
-                            style: TextStyle(color: AppColors.black),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    BlocConsumer<RegisterBloc, RegisterState>(
-                      listener: (context, state) {
-                        state.maybeWhen(
-                          success: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return const LoginPage();
-                                },
-                              ),
-                            );
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: const Text(
-                                  'Registrasi berhasil',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(color: AppColors.white),
-                                ),
-                                backgroundColor: AppColors.primary,
-                              ),
-                            );
-                          },
-                          error: (message) {
-                            ScaffoldMessenger.of(
-                              context,
-                            ).showSnackBar(SnackBar(content: Text(message)));
-                          },
-                          orElse: () {},
-                        );
-                      },
-                      builder: (context, state) {
-                        return state.maybeWhen(
-                          loading: () =>
-                              const Center(child: CircularProgressIndicator()),
-                          orElse: () {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                              ),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.primary,
-                                  minimumSize: Size(double.infinity, 50),
-                                ),
-                                onPressed: () {
-                                  _submit();
-                                },
-                                child: Text(
-                                  'DAFTAR',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: AppColors.white,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    // SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Sudah punya akun? ',
-                          style: TextStyle(color: AppColors.black),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return const LoginPage();
-                                },
-                              ),
-                            );
-                          },
-                          child: Text('Masuk'),
-                        ),
-                      ],
-                    ),
-                  ],
+      backgroundColor: AppColors.background,
+      body: BlocConsumer<RegisterBloc, RegisterState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            loading: () => setState(() => _isLoading = true),
+            success: () {
+              setState(() => _isLoading = false);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => const LoginPage()),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text(
+                    'Registrasi berhasil, silakan masuk ke akun Anda',
+                  ),
+                  backgroundColor: AppColors.success600,
+                  behavior: SnackBarBehavior.floating,
+                  margin: const EdgeInsets.all(16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppRadius.md),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
+              );
+            },
+            error: (message) {
+              setState(() => _isLoading = false);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(message),
+                  backgroundColor: AppColors.error500,
+                  behavior: SnackBarBehavior.floating,
+                  margin: const EdgeInsets.all(16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(AppRadius.md),
+                  ),
+                ),
+              );
+            },
+            orElse: () {},
+          );
+        },
+        builder: (context, state) {
+          return SafeArea(
+            child: Stack(
+              children: [
+                Positioned(
+                  top: -72,
+                  left: -40,
+                  child: Container(
+                    width: 220,
+                    height: 220,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.primary100.withValues(alpha: 0.82),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 180,
+                  right: -56,
+                  child: Container(
+                    width: 180,
+                    height: 180,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.primary200.withValues(alpha: 0.45),
+                    ),
+                  ),
+                ),
+                SingleChildScrollView(
+                  padding: AppSpacing.screenPadding,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppIconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(Icons.arrow_back_ios_new, size: 18),
+                        variant: AppButtonVariant.ghost,
+                        size: AppButtonSize.small,
+                      ),
+                      AppSpacing.vGapSm,
+                      Center(
+                        child: Image.asset(
+                          'assets/images/logo/poskita.png',
+                          width: 150,
+                        ),
+                      ),
+                      AppSpacing.vGapXl,
+                      AppCard(
+                        variant: AppCardVariant.elevated,
+                        padding: AppSpacing.allLg,
+                        child: Form(
+                          key: _formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Daftarkan Bisnis Anda',
+                                style: AppTypography.titleLarge.copyWith(
+                                  color: AppColors.textPrimary,
+                                ),
+                              ),
+                              AppSpacing.vGapSm,
+                              Text(
+                                'Lengkapi data berikut untuk mulai memakai POS Kita',
+                                style: AppTypography.bodyMedium.copyWith(
+                                  color: AppColors.textSecondary,
+                                ),
+                              ),
+                              AppSpacing.vGapSm,
+                              AppTextField(
+                                controller: _nameController,
+                                label: 'Nama',
+                                hint: 'Contoh: Ilham',
+                                prefixIcon: const Icon(Icons.person_outline),
+                                textInputAction: TextInputAction.next,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Nama owner tidak boleh kosong';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              AppSpacing.vGapSm,
+                              AppTextField(
+                                controller: _businessNameController,
+                                label: 'Nama Bisnis',
+                                hint: 'Contoh: Toko Sembako Maju',
+                                prefixIcon: const Icon(
+                                  Icons.storefront_outlined,
+                                ),
+                                textInputAction: TextInputAction.next,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Nama bisnis tidak boleh kosong';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              AppSpacing.vGapSm,
+                              AppTextField(
+                                controller: _emailController,
+                                label: 'Email',
+                                hint: 'contoh@bisnisanda.com',
+                                prefixIcon: const Icon(
+                                  Icons.mail_outline_rounded,
+                                ),
+                                keyboardType: TextInputType.emailAddress,
+                                textInputAction: TextInputAction.next,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Email tidak boleh kosong';
+                                  }
+                                  if (!value.contains('@')) {
+                                    return 'Format email tidak valid';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              AppSpacing.vGapSm,
+                              AppTextField(
+                                controller: _passwordController,
+                                label: 'Password',
+                                hint: 'Minimal 6 karakter',
+                                prefixIcon: const Icon(
+                                  Icons.lock_outline_rounded,
+                                ),
+                                obscureText: true,
+                                textInputAction: TextInputAction.next,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Password tidak boleh kosong';
+                                  }
+                                  if (value.length < 6) {
+                                    return 'Password minimal 6 karakter';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              AppSpacing.vGapSm,
+                              AppTextField(
+                                controller: _businessAddressController,
+                                label: 'Alamat Bisnis',
+                                hint: 'Masukkan alamat lengkap bisnis Anda',
+                                prefixIcon: const Icon(
+                                  Icons.location_on_outlined,
+                                ),
+                                keyboardType: TextInputType.streetAddress,
+                                textInputAction: TextInputAction.done,
+                                minLines: 3,
+                                maxLines: 4,
+                                onSubmitted: (_) => _submit(),
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Alamat bisnis tidak boleh kosong';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              AppSpacing.vGapMd,
+                              AppCard(
+                                variant: AppCardVariant.flat,
+                                padding: AppSpacing.allMd,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Theme(
+                                      data: Theme.of(context).copyWith(
+                                        checkboxTheme: CheckboxThemeData(
+                                          fillColor:
+                                              WidgetStateProperty.resolveWith((
+                                                states,
+                                              ) {
+                                                if (states.contains(
+                                                  WidgetState.selected,
+                                                )) {
+                                                  return AppColors.primary600;
+                                                }
+                                                return AppColors.surface;
+                                              }),
+                                        ),
+                                      ),
+                                      child: Checkbox(
+                                        value: _isAgree,
+                                        onChanged: (_) => _toggleAgree(),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            AppRadius.sm,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    AppSpacing.hGapXs,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                          top: AppSpacing.xs,
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Saya setuju dengan syarat dan ketentuan.',
+                                              style: AppTypography.bodyMedium
+                                                  .copyWith(
+                                                    color:
+                                                        AppColors.textPrimary,
+                                                  ),
+                                            ),
+                                            AppSpacing.vGapXxs,
+                                            Text(
+                                              'Data bisnis Anda akan digunakan untuk proses aktivasi akun dan pengelolaan toko.',
+                                              style: AppTypography.bodySmall
+                                                  .copyWith(
+                                                    color:
+                                                        AppColors.textSecondary,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              AppSpacing.vGapMd,
+                              AppButton.filled(
+                                onPressed: _isLoading ? null : _submit,
+                                label: 'Buat Akun',
+                                isLoading: _isLoading,
+                                size: AppButtonSize.large,
+                                width: double.infinity,
+                                prefixIcon: const Icon(
+                                  Icons.person_add_alt_1_rounded,
+                                ),
+                              ),
+                              AppSpacing.vGapMd,
+                              AppCard(
+                                variant: AppCardVariant.flat,
+                                padding: AppSpacing.allMd,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 44,
+                                      height: 44,
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primary100,
+                                        borderRadius: BorderRadius.circular(
+                                          AppRadius.md,
+                                        ),
+                                      ),
+                                      child: const Icon(
+                                        Icons.login_rounded,
+                                        color: AppColors.primary700,
+                                      ),
+                                    ),
+                                    AppSpacing.hGapMd,
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Sudah punya akun?',
+                                            style: AppTypography.titleSmall
+                                                .copyWith(
+                                                  color: AppColors.textPrimary,
+                                                ),
+                                          ),
+                                          AppSpacing.vGapXxs,
+                                          Text(
+                                            'Masuk ke akun Anda untuk lanjut mengelola bisnis.',
+                                            style: AppTypography.bodySmall
+                                                .copyWith(
+                                                  color:
+                                                      AppColors.textSecondary,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    AppSpacing.hGapSm,
+                                    AppButton.outlined(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) => const LoginPage(),
+                                          ),
+                                        );
+                                      },
+                                      label: 'Masuk',
+                                      size: AppButtonSize.small,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      AppSpacing.vGapXl,
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

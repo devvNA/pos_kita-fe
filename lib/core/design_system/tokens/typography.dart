@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 /// Jago POS Design System - Typography
-/// 
+///
 /// Uses Plus Jakarta Sans - a geometric sans-serif with modern feel.
 /// Designed for readability in POS environment with quick scanning.
-/// 
+///
 /// Scale: Display → Headline → Title → Body → Label → Caption
 
 class AppTypography {
@@ -124,7 +124,7 @@ class AppTypography {
   // ============================================
   // DIRECT STYLES - For direct use
   // ============================================
-  
+
   // Display
   static TextStyle displayLarge = textTheme.displayLarge!;
   static TextStyle displayMedium = textTheme.displayMedium!;
@@ -153,7 +153,7 @@ class AppTypography {
   // ============================================
   // SPECIAL STYLES - POS Specific
   // ============================================
-  
+
   /// For price displays - uses tabular figures for alignment
   static TextStyle get priceLarge => GoogleFonts.plusJakartaSans(
     fontSize: 28,
@@ -214,5 +214,6 @@ extension TextStyleExtension on TextStyle {
   TextStyle get medium => copyWith(fontWeight: FontWeight.w500);
 
   /// Apply letter spacing
-  TextStyle withLetterSpacing(double spacing) => copyWith(letterSpacing: spacing);
+  TextStyle withLetterSpacing(double spacing) =>
+      copyWith(letterSpacing: spacing);
 }

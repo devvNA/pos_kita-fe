@@ -229,7 +229,7 @@ class _AppButtonState extends State<AppButton>
       case AppButtonVariant.ghost:
         return Colors.transparent;
       case AppButtonVariant.outlined:
-        return AppColors.border;
+        return AppColors.primary;
     }
   }
 
@@ -278,8 +278,8 @@ class _AppButtonState extends State<AppButton>
                 child: InkWell(
                   onTap: isEnabled ? widget.onPressed : null,
                   borderRadius: BorderRadius.circular(AppRadius.button),
-                  splashColor: Colors.white.withOpacity(0.1),
-                  highlightColor: Colors.white.withOpacity(0.05),
+                  splashColor: Colors.white.withValues(alpha: 0.1),
+                  highlightColor: Colors.white.withValues(alpha: 0.05),
                   child: Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: _horizontalPadding,
@@ -410,7 +410,7 @@ class _AppIconButtonState extends State<AppIconButton>
   }
 
   Color get _backgroundColor {
-    if (widget.isDisabled) return AppColors.disabled.withOpacity(0.5);
+    if (widget.isDisabled) return AppColors.disabled.withValues(alpha: 0.5);
 
     switch (widget.variant) {
       case AppButtonVariant.filled:

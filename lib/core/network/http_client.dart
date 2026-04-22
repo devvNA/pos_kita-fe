@@ -4,7 +4,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:http/browser_client.dart';
+// import 'package:flutter/foundation.dart' show kIsWeb;
+// import 'package:http/browser_client.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_exception.dart';
@@ -42,9 +43,9 @@ class HttpClient {
              HttpHeaders.acceptHeader: ContentType.json.value,
            } {
     _client = client ?? http.Client();
-    if (withCredentials && _client is BrowserClient) {
-      (_client).withCredentials = true;
-    }
+    // if (kIsWeb && withCredentials && _client is BrowserClient) {
+    //   (_client).withCredentials = true;
+    // }
   }
 
   // ─── Public Methods ───────────────────────────────────────────────────────
@@ -219,7 +220,11 @@ class HttpClient {
         return ApiResponse.success(statusCode: statusCode, data: data);
 
       case 401:
-        throw const UnauthorizedException();
+        throw ApiException(
+          statusCode: statusCode,
+          message: _extractMessage(body) ?? 'Unauthorized. Please login again.',
+          data: body,
+        );
 
       case 404:
         throw NotFoundException(

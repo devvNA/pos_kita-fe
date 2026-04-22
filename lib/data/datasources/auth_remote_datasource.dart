@@ -35,7 +35,8 @@ class AuthRemoteDataSource {
   //register
   Future<Either<String, AuthResponseModel>> register(
     String name,
-    String address,
+    String businessName,
+    String businessAddress,
     String email,
     String password,
   ) async {
@@ -44,10 +45,10 @@ class AuthRemoteDataSource {
         '/api/register',
         body: {
           'name': name,
-          'business_name': name,
+          'business_name': businessName,
+          'address': businessAddress,
           'email': email,
           'password': password,
-          'address': address,
         },
         fromJson: (json) =>
             AuthResponseModel.fromMap(json as Map<String, dynamic>),
@@ -125,9 +126,21 @@ class AuthRemoteDataSource {
 
       return Left(response.message ?? fallbackMessage);
     } on ApiException catch (e) {
-      return Left(e.message);
+      return Left(_extractApiMessage(e) ?? e.message);
     } catch (_) {
       return const Left('Terjadi kesalahan tidak terduga.');
     }
+  }
+
+  String? _extractApiMessage(ApiException exception) {
+    final data = exception.data;
+    if (data is Map<String, dynamic>) {
+      final message = data['message']?.toString().trim();
+      if (message != null && message.isNotEmpty) {
+        return message;
+      }
+    }
+
+    return null;
   }
 }

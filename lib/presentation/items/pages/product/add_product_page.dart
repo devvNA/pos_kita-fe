@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pos_kita/core/components/barcode_scanner_page.dart';
@@ -21,6 +22,7 @@ class AddProductPage extends StatefulWidget {
 }
 
 class _AddProductPageState extends State<AddProductPage> {
+  final ImagePicker _imagePicker = ImagePicker();
   final _nameController = TextEditingController();
   final _priceController = TextEditingController();
   final _barcodeController = TextEditingController();
@@ -66,14 +68,44 @@ class _AddProductPageState extends State<AddProductPage> {
     }
   }
 
-  void _getImage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image != null) setState(() => _image = image);
+  Future<void> _getImage() async {
+    final image = await _imagePicker.pickImage(source: ImageSource.gallery);
+    if (!mounted || image == null) return;
+
+    setState(() => _image = image);
   }
 
-  void _takePicture() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.camera);
-    if (image != null) setState(() => _image = image);
+  Future<void> _takePicture() async {
+    try {
+      final image = await _imagePicker.pickImage(
+        source: ImageSource.camera,
+        preferredCameraDevice: CameraDevice.rear,
+      );
+
+      if (!mounted || image == null) return;
+
+      setState(() => _image = image);
+    } on PlatformException catch (e) {
+      if (!mounted) return;
+
+      final message = switch (e.code) {
+        'camera_access_denied' =>
+          'Izin kamera ditolak. Aktifkan izin kamera lalu coba lagi.',
+        'camera_access_denied_without_prompt' =>
+          'Izin kamera diblokir. Aktifkan izin kamera di pengaturan aplikasi.',
+        'no_available_camera' =>
+          'Perangkat tidak memiliki kamera yang bisa digunakan.',
+        _ => 'Gagal membuka kamera. Pastikan izin kamera sudah diberikan.',
+      };
+
+      context.showSnackBar(message, AppColors.error500);
+    } catch (_) {
+      if (!mounted) return;
+      context.showSnackBar(
+        'Gagal membuka kamera. Coba lagi.',
+        AppColors.error500,
+      );
+    }
   }
 
   void _scanBarcode() async {
@@ -109,13 +141,11 @@ class _AddProductPageState extends State<AddProductPage> {
             // Category Dropdown
             BlocBuilder<CategoryBloc, CategoryState>(
               builder: (context, state) {
-                List<Category> categories = [
-                  Category(id: 0, name: 'Pilih Kategori'),
-                ];
+                List<Category> categories = [];
                 state.maybeWhen(
                   orElse: () {},
                   success: (data) {
-                    if (data != null && data.isNotEmpty) categories = data;
+                    if (data.isNotEmpty) categories = data;
                   },
                 );
 
@@ -146,7 +176,13 @@ class _AddProductPageState extends State<AddProductPage> {
                               ? categories.firstWhere(
                                   (e) => e.id == _selectedCategoryData?.id,
                                 )
-                              : categories.first,
+                              : null,
+                          hint: Text(
+                            'Pilih Kategori',
+                            style: AppTypography.bodyMedium.copyWith(
+                              color: AppColors.textTertiary,
+                            ),
+                          ),
                           isExpanded: true,
                           dropdownColor: AppColors.surface,
                           items: categories.map((Category category) {
@@ -398,10 +434,12 @@ class _AddProductPageState extends State<AddProductPage> {
       );
 
       if (_isImage) {
+        if (!mounted) return;
         context.read<ProductBloc>().add(
           ProductEvent.addProductWithImage(data, _image!),
         );
       } else {
+        if (!mounted) return;
         context.read<ProductBloc>().add(ProductEvent.addProduct(data));
       }
     }

@@ -72,7 +72,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                       ? Image.file(File(imagePath!), fit: BoxFit.cover)
                       : Container(
                           padding: const EdgeInsets.all(16.0),
-                          color: AppColors.black.withOpacity(0.05),
+                          color: AppColors.black.withValues(alpha: 0.05),
                           child: Assets.icons.image.svg(),
                         ),
                 ),

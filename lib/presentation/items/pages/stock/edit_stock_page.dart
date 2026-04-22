@@ -65,7 +65,7 @@ class _EditStockPageState extends State<EditStockPage> {
                   labelText: 'Type',
                   hintText: 'Type',
                 ),
-                value: _selectedStockType,
+                initialValue: _selectedStockType,
                 onChanged: (String? newValue) {
                   setState(() {
                     _selectedStockType = newValue;

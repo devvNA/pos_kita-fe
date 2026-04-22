@@ -19,7 +19,7 @@ class AppShadows {
   /// Elevation 1 - Subtle (cards at rest)
   static List<BoxShadow> get xs => [
     BoxShadow(
-      color: AppColors.shadowNeutral.withOpacity(0.06),
+      color: AppColors.shadowNeutral.withValues(alpha: 0.06),
       blurRadius: 2,
       offset: const Offset(0, 1),
     ),
@@ -28,12 +28,12 @@ class AppShadows {
   /// Elevation 2 - Light (cards hover, buttons)
   static List<BoxShadow> get sm => [
     BoxShadow(
-      color: AppColors.shadowNeutral.withOpacity(0.06),
+      color: AppColors.shadowNeutral.withValues(alpha: 0.06),
       blurRadius: 4,
       offset: const Offset(0, 2),
     ),
     BoxShadow(
-      color: AppColors.shadowLight.withOpacity(0.04),
+      color: AppColors.shadowLight.withValues(alpha: 0.04),
       blurRadius: 2,
       offset: const Offset(0, 1),
     ),
@@ -42,12 +42,12 @@ class AppShadows {
   /// Elevation 3 - Medium (floating elements)
   static List<BoxShadow> get md => [
     BoxShadow(
-      color: AppColors.shadowNeutral.withOpacity(0.08),
+      color: AppColors.shadowNeutral.withValues(alpha: 0.08),
       blurRadius: 8,
       offset: const Offset(0, 4),
     ),
     BoxShadow(
-      color: AppColors.shadowLight.withOpacity(0.04),
+      color: AppColors.shadowLight.withValues(alpha: 0.04),
       blurRadius: 4,
       offset: const Offset(0, 2),
     ),
@@ -56,12 +56,12 @@ class AppShadows {
   /// Elevation 4 - High (modals, drawers)
   static List<BoxShadow> get lg => [
     BoxShadow(
-      color: AppColors.shadowNeutral.withOpacity(0.1),
+      color: AppColors.shadowNeutral.withValues(alpha: 0.1),
       blurRadius: 16,
       offset: const Offset(0, 8),
     ),
     BoxShadow(
-      color: AppColors.shadowLight.withOpacity(0.05),
+      color: AppColors.shadowLight.withValues(alpha: 0.05),
       blurRadius: 8,
       offset: const Offset(0, 4),
     ),
@@ -70,12 +70,12 @@ class AppShadows {
   /// Elevation 5 - Maximum (dialogs, bottom sheets)
   static List<BoxShadow> get xl => [
     BoxShadow(
-      color: AppColors.shadowNeutral.withOpacity(0.12),
+      color: AppColors.shadowNeutral.withValues(alpha: 0.12),
       blurRadius: 24,
       offset: const Offset(0, 12),
     ),
     BoxShadow(
-      color: AppColors.shadowLight.withOpacity(0.06),
+      color: AppColors.shadowLight.withValues(alpha: 0.06),
       blurRadius: 12,
       offset: const Offset(0, 6),
     ),
@@ -88,12 +88,12 @@ class AppShadows {
   /// Primary shadow for CTA elements
   static List<BoxShadow> get primary => [
     BoxShadow(
-      color: AppColors.primary500.withOpacity(0.25),
+      color: AppColors.primary500.withValues(alpha: 0.25),
       blurRadius: 12,
       offset: const Offset(0, 4),
     ),
     BoxShadow(
-      color: AppColors.primary500.withOpacity(0.1),
+      color: AppColors.primary500.withValues(alpha: 0.1),
       blurRadius: 4,
       offset: const Offset(0, 2),
     ),
@@ -102,7 +102,7 @@ class AppShadows {
   /// Success shadow for positive actions
   static List<BoxShadow> get success => [
     BoxShadow(
-      color: AppColors.success500.withOpacity(0.25),
+      color: AppColors.success500.withValues(alpha: 0.25),
       blurRadius: 12,
       offset: const Offset(0, 4),
     ),
@@ -111,7 +111,7 @@ class AppShadows {
   /// Error shadow for negative actions
   static List<BoxShadow> get error => [
     BoxShadow(
-      color: AppColors.error500.withOpacity(0.25),
+      color: AppColors.error500.withValues(alpha: 0.25),
       blurRadius: 12,
       offset: const Offset(0, 4),
     ),
@@ -124,7 +124,7 @@ class AppShadows {
   /// Inner shadow for pressed states
   static List<BoxShadow> get inner => [
     BoxShadow(
-      color: AppColors.shadowNeutral.withOpacity(0.08),
+      color: AppColors.shadowNeutral.withValues(alpha: 0.08),
       blurRadius: 4,
       offset: const Offset(0, 2),
     ),
@@ -137,7 +137,7 @@ class AppShadows {
   /// Subtle glow for active states
   static List<BoxShadow> get glowPrimary => [
     BoxShadow(
-      color: AppColors.primary500.withOpacity(0.3),
+      color: AppColors.primary500.withValues(alpha: 0.3),
       blurRadius: 20,
       spreadRadius: -4,
     ),
@@ -145,7 +145,7 @@ class AppShadows {
 
   static List<BoxShadow> get glowSuccess => [
     BoxShadow(
-      color: AppColors.success500.withOpacity(0.3),
+      color: AppColors.success500.withValues(alpha: 0.3),
       blurRadius: 20,
       spreadRadius: -4,
     ),

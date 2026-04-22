@@ -227,7 +227,7 @@ class _HomePageState extends State<HomePage>
         width: 36,
         height: 36,
         decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
+          color: color.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(AppRadius.md),
         ),
         child: Icon(icon, color: color, size: 20),
@@ -351,7 +351,7 @@ class _HomePageState extends State<HomePage>
                     children: [
                       Icon(
                         Icons.shopping_cart_checkout,
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.white.withValues(alpha: 0.9),
                         size: 20,
                       ),
                       AppSpacing.hGapSm,
@@ -359,7 +359,7 @@ class _HomePageState extends State<HomePage>
                         key: cartKey,
                         'BAYAR',
                         style: AppTypography.labelLarge.copyWith(
-                          color: Colors.white.withOpacity(0.9),
+                          color: Colors.white.withValues(alpha: 0.9),
                           letterSpacing: 1.2,
                         ),
                       ),
@@ -385,7 +385,7 @@ class _HomePageState extends State<HomePage>
                                   vertical: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
+                                  color: Colors.white.withValues(alpha: 0.2),
                                   borderRadius: BorderRadius.circular(
                                     AppRadius.sm,
                                   ),
@@ -417,7 +417,7 @@ class _HomePageState extends State<HomePage>
                                   vertical: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
+                                  color: Colors.white.withValues(alpha: 0.2),
                                   borderRadius: BorderRadius.circular(
                                     AppRadius.sm,
                                   ),

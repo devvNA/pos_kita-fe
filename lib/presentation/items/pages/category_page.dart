@@ -626,6 +626,7 @@ class _CategoryTileSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppCard(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           Skeleton(width: 52, height: 52, borderRadius: 16),
           SpaceWidth(12),
@@ -637,10 +638,11 @@ class _CategoryTileSkeleton extends StatelessWidget {
                 SpaceHeight(8),
                 Skeleton(width: 120, height: 12, borderRadius: 8),
                 SpaceHeight(12),
-                Row(
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
                   children: [
                     Skeleton(width: 92, height: 28, borderRadius: 999),
-                    SpaceWidth(8),
                     Skeleton(width: 98, height: 28, borderRadius: 999),
                   ],
                 ),

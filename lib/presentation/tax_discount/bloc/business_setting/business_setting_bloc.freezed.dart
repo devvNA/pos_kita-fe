@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1498 +9,834 @@ part of 'business_setting_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$BusinessSettingEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(BusinessSettingRequestModel data)
-    addBusinessSetting,
-    required TResult Function() getBusinessSetting,
-    required TResult Function(BusinessSettingRequestModel data, int id)
-    editBusinessSetting,
-    required TResult Function(int id) deleteBusinessSetting,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult? Function()? getBusinessSetting,
-    TResult? Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult? Function(int id)? deleteBusinessSetting,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult Function()? getBusinessSetting,
-    TResult Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult Function(int id)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AddBusinessSetting value) addBusinessSetting,
-    required TResult Function(_GetBusinessSetting value) getBusinessSetting,
-    required TResult Function(_EditBusinessSetting value) editBusinessSetting,
-    required TResult Function(_DeleteBusinessSetting value)
-    deleteBusinessSetting,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult? Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult? Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult? Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BusinessSettingEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'BusinessSettingEvent()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $BusinessSettingEventCopyWith<$Res> {
-  factory $BusinessSettingEventCopyWith(
-    BusinessSettingEvent value,
-    $Res Function(BusinessSettingEvent) then,
-  ) = _$BusinessSettingEventCopyWithImpl<$Res, BusinessSettingEvent>;
+class $BusinessSettingEventCopyWith<$Res>  {
+$BusinessSettingEventCopyWith(BusinessSettingEvent _, $Res Function(BusinessSettingEvent) __);
 }
 
-/// @nodoc
-class _$BusinessSettingEventCopyWithImpl<
-  $Res,
-  $Val extends BusinessSettingEvent
->
-    implements $BusinessSettingEventCopyWith<$Res> {
-  _$BusinessSettingEventCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [BusinessSettingEvent].
+extension BusinessSettingEventPatterns on BusinessSettingEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _AddBusinessSetting value)?  addBusinessSetting,TResult Function( _GetBusinessSetting value)?  getBusinessSetting,TResult Function( _EditBusinessSetting value)?  editBusinessSetting,TResult Function( _DeleteBusinessSetting value)?  deleteBusinessSetting,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _AddBusinessSetting() when addBusinessSetting != null:
+return addBusinessSetting(_that);case _GetBusinessSetting() when getBusinessSetting != null:
+return getBusinessSetting(_that);case _EditBusinessSetting() when editBusinessSetting != null:
+return editBusinessSetting(_that);case _DeleteBusinessSetting() when deleteBusinessSetting != null:
+return deleteBusinessSetting(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _AddBusinessSetting value)  addBusinessSetting,required TResult Function( _GetBusinessSetting value)  getBusinessSetting,required TResult Function( _EditBusinessSetting value)  editBusinessSetting,required TResult Function( _DeleteBusinessSetting value)  deleteBusinessSetting,}){
+final _that = this;
+switch (_that) {
+case _Started():
+return started(_that);case _AddBusinessSetting():
+return addBusinessSetting(_that);case _GetBusinessSetting():
+return getBusinessSetting(_that);case _EditBusinessSetting():
+return editBusinessSetting(_that);case _DeleteBusinessSetting():
+return deleteBusinessSetting(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _AddBusinessSetting value)?  addBusinessSetting,TResult? Function( _GetBusinessSetting value)?  getBusinessSetting,TResult? Function( _EditBusinessSetting value)?  editBusinessSetting,TResult? Function( _DeleteBusinessSetting value)?  deleteBusinessSetting,}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _AddBusinessSetting() when addBusinessSetting != null:
+return addBusinessSetting(_that);case _GetBusinessSetting() when getBusinessSetting != null:
+return getBusinessSetting(_that);case _EditBusinessSetting() when editBusinessSetting != null:
+return editBusinessSetting(_that);case _DeleteBusinessSetting() when deleteBusinessSetting != null:
+return deleteBusinessSetting(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function( BusinessSettingRequestModel data)?  addBusinessSetting,TResult Function()?  getBusinessSetting,TResult Function( BusinessSettingRequestModel data,  int id)?  editBusinessSetting,TResult Function( int id)?  deleteBusinessSetting,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started();case _AddBusinessSetting() when addBusinessSetting != null:
+return addBusinessSetting(_that.data);case _GetBusinessSetting() when getBusinessSetting != null:
+return getBusinessSetting();case _EditBusinessSetting() when editBusinessSetting != null:
+return editBusinessSetting(_that.data,_that.id);case _DeleteBusinessSetting() when deleteBusinessSetting != null:
+return deleteBusinessSetting(_that.id);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function( BusinessSettingRequestModel data)  addBusinessSetting,required TResult Function()  getBusinessSetting,required TResult Function( BusinessSettingRequestModel data,  int id)  editBusinessSetting,required TResult Function( int id)  deleteBusinessSetting,}) {final _that = this;
+switch (_that) {
+case _Started():
+return started();case _AddBusinessSetting():
+return addBusinessSetting(_that.data);case _GetBusinessSetting():
+return getBusinessSetting();case _EditBusinessSetting():
+return editBusinessSetting(_that.data,_that.id);case _DeleteBusinessSetting():
+return deleteBusinessSetting(_that.id);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function( BusinessSettingRequestModel data)?  addBusinessSetting,TResult? Function()?  getBusinessSetting,TResult? Function( BusinessSettingRequestModel data,  int id)?  editBusinessSetting,TResult? Function( int id)?  deleteBusinessSetting,}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started();case _AddBusinessSetting() when addBusinessSetting != null:
+return addBusinessSetting(_that.data);case _GetBusinessSetting() when getBusinessSetting != null:
+return getBusinessSetting();case _EditBusinessSetting() when editBusinessSetting != null:
+return editBusinessSetting(_that.data,_that.id);case _DeleteBusinessSetting() when deleteBusinessSetting != null:
+return deleteBusinessSetting(_that.id);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-    _$StartedImpl value,
-    $Res Function(_$StartedImpl) then,
-  ) = __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$BusinessSettingEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-    _$StartedImpl _value,
-    $Res Function(_$StartedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'BusinessSettingEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(BusinessSettingRequestModel data)
-    addBusinessSetting,
-    required TResult Function() getBusinessSetting,
-    required TResult Function(BusinessSettingRequestModel data, int id)
-    editBusinessSetting,
-    required TResult Function(int id) deleteBusinessSetting,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult? Function()? getBusinessSetting,
-    TResult? Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult? Function(int id)? deleteBusinessSetting,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult Function()? getBusinessSetting,
-    TResult Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult Function(int id)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AddBusinessSetting value) addBusinessSetting,
-    required TResult Function(_GetBusinessSetting value) getBusinessSetting,
-    required TResult Function(_EditBusinessSetting value) editBusinessSetting,
-    required TResult Function(_DeleteBusinessSetting value)
-    deleteBusinessSetting,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult? Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult? Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult? Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements BusinessSettingEvent {
-  const factory _Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$AddBusinessSettingImplCopyWith<$Res> {
-  factory _$$AddBusinessSettingImplCopyWith(
-    _$AddBusinessSettingImpl value,
-    $Res Function(_$AddBusinessSettingImpl) then,
-  ) = __$$AddBusinessSettingImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({BusinessSettingRequestModel data});
-}
-
-/// @nodoc
-class __$$AddBusinessSettingImplCopyWithImpl<$Res>
-    extends _$BusinessSettingEventCopyWithImpl<$Res, _$AddBusinessSettingImpl>
-    implements _$$AddBusinessSettingImplCopyWith<$Res> {
-  __$$AddBusinessSettingImplCopyWithImpl(
-    _$AddBusinessSettingImpl _value,
-    $Res Function(_$AddBusinessSettingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$AddBusinessSettingImpl(
-        null == data
-            ? _value.data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as BusinessSettingRequestModel,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$AddBusinessSettingImpl implements _AddBusinessSetting {
-  const _$AddBusinessSettingImpl(this.data);
 
-  @override
-  final BusinessSettingRequestModel data;
+class _Started implements BusinessSettingEvent {
+  const _Started();
+  
 
-  @override
-  String toString() {
-    return 'BusinessSettingEvent.addBusinessSetting(data: $data)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddBusinessSettingImpl &&
-            (identical(other.data, data) || other.data == data));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, data);
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddBusinessSettingImplCopyWith<_$AddBusinessSettingImpl> get copyWith =>
-      __$$AddBusinessSettingImplCopyWithImpl<_$AddBusinessSettingImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(BusinessSettingRequestModel data)
-    addBusinessSetting,
-    required TResult Function() getBusinessSetting,
-    required TResult Function(BusinessSettingRequestModel data, int id)
-    editBusinessSetting,
-    required TResult Function(int id) deleteBusinessSetting,
-  }) {
-    return addBusinessSetting(data);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult? Function()? getBusinessSetting,
-    TResult? Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult? Function(int id)? deleteBusinessSetting,
-  }) {
-    return addBusinessSetting?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult Function()? getBusinessSetting,
-    TResult Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult Function(int id)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (addBusinessSetting != null) {
-      return addBusinessSetting(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AddBusinessSetting value) addBusinessSetting,
-    required TResult Function(_GetBusinessSetting value) getBusinessSetting,
-    required TResult Function(_EditBusinessSetting value) editBusinessSetting,
-    required TResult Function(_DeleteBusinessSetting value)
-    deleteBusinessSetting,
-  }) {
-    return addBusinessSetting(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult? Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult? Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult? Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-  }) {
-    return addBusinessSetting?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (addBusinessSetting != null) {
-      return addBusinessSetting(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started);
 }
 
-abstract class _AddBusinessSetting implements BusinessSettingEvent {
-  const factory _AddBusinessSetting(final BusinessSettingRequestModel data) =
-      _$AddBusinessSettingImpl;
 
-  BusinessSettingRequestModel get data;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddBusinessSettingImplCopyWith<_$AddBusinessSettingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'BusinessSettingEvent.started()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _AddBusinessSetting implements BusinessSettingEvent {
+  const _AddBusinessSetting(this.data);
+  
+
+ final  BusinessSettingRequestModel data;
+
+/// Create a copy of BusinessSettingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddBusinessSettingCopyWith<_AddBusinessSetting> get copyWith => __$AddBusinessSettingCopyWithImpl<_AddBusinessSetting>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddBusinessSetting&&(identical(other.data, data) || other.data == data));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,data);
+
+@override
+String toString() {
+  return 'BusinessSettingEvent.addBusinessSetting(data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$GetBusinessSettingImplCopyWith<$Res> {
-  factory _$$GetBusinessSettingImplCopyWith(
-    _$GetBusinessSettingImpl value,
-    $Res Function(_$GetBusinessSettingImpl) then,
-  ) = __$$GetBusinessSettingImplCopyWithImpl<$Res>;
+abstract mixin class _$AddBusinessSettingCopyWith<$Res> implements $BusinessSettingEventCopyWith<$Res> {
+  factory _$AddBusinessSettingCopyWith(_AddBusinessSetting value, $Res Function(_AddBusinessSetting) _then) = __$AddBusinessSettingCopyWithImpl;
+@useResult
+$Res call({
+ BusinessSettingRequestModel data
+});
+
+
+
+
+}
+/// @nodoc
+class __$AddBusinessSettingCopyWithImpl<$Res>
+    implements _$AddBusinessSettingCopyWith<$Res> {
+  __$AddBusinessSettingCopyWithImpl(this._self, this._then);
+
+  final _AddBusinessSetting _self;
+  final $Res Function(_AddBusinessSetting) _then;
+
+/// Create a copy of BusinessSettingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
+  return _then(_AddBusinessSetting(
+null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as BusinessSettingRequestModel,
+  ));
 }
 
-/// @nodoc
-class __$$GetBusinessSettingImplCopyWithImpl<$Res>
-    extends _$BusinessSettingEventCopyWithImpl<$Res, _$GetBusinessSettingImpl>
-    implements _$$GetBusinessSettingImplCopyWith<$Res> {
-  __$$GetBusinessSettingImplCopyWithImpl(
-    _$GetBusinessSettingImpl _value,
-    $Res Function(_$GetBusinessSettingImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$GetBusinessSettingImpl implements _GetBusinessSetting {
-  const _$GetBusinessSettingImpl();
 
-  @override
-  String toString() {
-    return 'BusinessSettingEvent.getBusinessSetting()';
-  }
+class _GetBusinessSetting implements BusinessSettingEvent {
+  const _GetBusinessSetting();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetBusinessSettingImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(BusinessSettingRequestModel data)
-    addBusinessSetting,
-    required TResult Function() getBusinessSetting,
-    required TResult Function(BusinessSettingRequestModel data, int id)
-    editBusinessSetting,
-    required TResult Function(int id) deleteBusinessSetting,
-  }) {
-    return getBusinessSetting();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult? Function()? getBusinessSetting,
-    TResult? Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult? Function(int id)? deleteBusinessSetting,
-  }) {
-    return getBusinessSetting?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult Function()? getBusinessSetting,
-    TResult Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult Function(int id)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (getBusinessSetting != null) {
-      return getBusinessSetting();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AddBusinessSetting value) addBusinessSetting,
-    required TResult Function(_GetBusinessSetting value) getBusinessSetting,
-    required TResult Function(_EditBusinessSetting value) editBusinessSetting,
-    required TResult Function(_DeleteBusinessSetting value)
-    deleteBusinessSetting,
-  }) {
-    return getBusinessSetting(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult? Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult? Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult? Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-  }) {
-    return getBusinessSetting?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (getBusinessSetting != null) {
-      return getBusinessSetting(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetBusinessSetting);
 }
 
-abstract class _GetBusinessSetting implements BusinessSettingEvent {
-  const factory _GetBusinessSetting() = _$GetBusinessSettingImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'BusinessSettingEvent.getBusinessSetting()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _EditBusinessSetting implements BusinessSettingEvent {
+  const _EditBusinessSetting(this.data, this.id);
+  
+
+ final  BusinessSettingRequestModel data;
+ final  int id;
+
+/// Create a copy of BusinessSettingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EditBusinessSettingCopyWith<_EditBusinessSetting> get copyWith => __$EditBusinessSettingCopyWithImpl<_EditBusinessSetting>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EditBusinessSetting&&(identical(other.data, data) || other.data == data)&&(identical(other.id, id) || other.id == id));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,data,id);
+
+@override
+String toString() {
+  return 'BusinessSettingEvent.editBusinessSetting(data: $data, id: $id)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$EditBusinessSettingImplCopyWith<$Res> {
-  factory _$$EditBusinessSettingImplCopyWith(
-    _$EditBusinessSettingImpl value,
-    $Res Function(_$EditBusinessSettingImpl) then,
-  ) = __$$EditBusinessSettingImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({BusinessSettingRequestModel data, int id});
+abstract mixin class _$EditBusinessSettingCopyWith<$Res> implements $BusinessSettingEventCopyWith<$Res> {
+  factory _$EditBusinessSettingCopyWith(_EditBusinessSetting value, $Res Function(_EditBusinessSetting) _then) = __$EditBusinessSettingCopyWithImpl;
+@useResult
+$Res call({
+ BusinessSettingRequestModel data, int id
+});
+
+
+
+
+}
+/// @nodoc
+class __$EditBusinessSettingCopyWithImpl<$Res>
+    implements _$EditBusinessSettingCopyWith<$Res> {
+  __$EditBusinessSettingCopyWithImpl(this._self, this._then);
+
+  final _EditBusinessSetting _self;
+  final $Res Function(_EditBusinessSetting) _then;
+
+/// Create a copy of BusinessSettingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? data = null,Object? id = null,}) {
+  return _then(_EditBusinessSetting(
+null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as BusinessSettingRequestModel,null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-class __$$EditBusinessSettingImplCopyWithImpl<$Res>
-    extends _$BusinessSettingEventCopyWithImpl<$Res, _$EditBusinessSettingImpl>
-    implements _$$EditBusinessSettingImplCopyWith<$Res> {
-  __$$EditBusinessSettingImplCopyWithImpl(
-    _$EditBusinessSettingImpl _value,
-    $Res Function(_$EditBusinessSettingImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? data = null, Object? id = null}) {
-    return _then(
-      _$EditBusinessSettingImpl(
-        null == data
-            ? _value.data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as BusinessSettingRequestModel,
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$EditBusinessSettingImpl implements _EditBusinessSetting {
-  const _$EditBusinessSettingImpl(this.data, this.id);
 
-  @override
-  final BusinessSettingRequestModel data;
-  @override
-  final int id;
+class _DeleteBusinessSetting implements BusinessSettingEvent {
+  const _DeleteBusinessSetting(this.id);
+  
 
-  @override
-  String toString() {
-    return 'BusinessSettingEvent.editBusinessSetting(data: $data, id: $id)';
-  }
+ final  int id;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EditBusinessSettingImpl &&
-            (identical(other.data, data) || other.data == data) &&
-            (identical(other.id, id) || other.id == id));
-  }
+/// Create a copy of BusinessSettingEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DeleteBusinessSettingCopyWith<_DeleteBusinessSetting> get copyWith => __$DeleteBusinessSettingCopyWithImpl<_DeleteBusinessSetting>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, data, id);
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EditBusinessSettingImplCopyWith<_$EditBusinessSettingImpl> get copyWith =>
-      __$$EditBusinessSettingImplCopyWithImpl<_$EditBusinessSettingImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(BusinessSettingRequestModel data)
-    addBusinessSetting,
-    required TResult Function() getBusinessSetting,
-    required TResult Function(BusinessSettingRequestModel data, int id)
-    editBusinessSetting,
-    required TResult Function(int id) deleteBusinessSetting,
-  }) {
-    return editBusinessSetting(data, id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult? Function()? getBusinessSetting,
-    TResult? Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult? Function(int id)? deleteBusinessSetting,
-  }) {
-    return editBusinessSetting?.call(data, id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult Function()? getBusinessSetting,
-    TResult Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult Function(int id)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (editBusinessSetting != null) {
-      return editBusinessSetting(data, id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AddBusinessSetting value) addBusinessSetting,
-    required TResult Function(_GetBusinessSetting value) getBusinessSetting,
-    required TResult Function(_EditBusinessSetting value) editBusinessSetting,
-    required TResult Function(_DeleteBusinessSetting value)
-    deleteBusinessSetting,
-  }) {
-    return editBusinessSetting(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult? Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult? Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult? Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-  }) {
-    return editBusinessSetting?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (editBusinessSetting != null) {
-      return editBusinessSetting(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DeleteBusinessSetting&&(identical(other.id, id) || other.id == id));
 }
 
-abstract class _EditBusinessSetting implements BusinessSettingEvent {
-  const factory _EditBusinessSetting(
-    final BusinessSettingRequestModel data,
-    final int id,
-  ) = _$EditBusinessSettingImpl;
 
-  BusinessSettingRequestModel get data;
-  int get id;
+@override
+int get hashCode => Object.hash(runtimeType,id);
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EditBusinessSettingImplCopyWith<_$EditBusinessSettingImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'BusinessSettingEvent.deleteBusinessSetting(id: $id)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$DeleteBusinessSettingImplCopyWith<$Res> {
-  factory _$$DeleteBusinessSettingImplCopyWith(
-    _$DeleteBusinessSettingImpl value,
-    $Res Function(_$DeleteBusinessSettingImpl) then,
-  ) = __$$DeleteBusinessSettingImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int id});
-}
+abstract mixin class _$DeleteBusinessSettingCopyWith<$Res> implements $BusinessSettingEventCopyWith<$Res> {
+  factory _$DeleteBusinessSettingCopyWith(_DeleteBusinessSetting value, $Res Function(_DeleteBusinessSetting) _then) = __$DeleteBusinessSettingCopyWithImpl;
+@useResult
+$Res call({
+ int id
+});
 
+
+
+
+}
 /// @nodoc
-class __$$DeleteBusinessSettingImplCopyWithImpl<$Res>
-    extends
-        _$BusinessSettingEventCopyWithImpl<$Res, _$DeleteBusinessSettingImpl>
-    implements _$$DeleteBusinessSettingImplCopyWith<$Res> {
-  __$$DeleteBusinessSettingImplCopyWithImpl(
-    _$DeleteBusinessSettingImpl _value,
-    $Res Function(_$DeleteBusinessSettingImpl) _then,
-  ) : super(_value, _then);
+class __$DeleteBusinessSettingCopyWithImpl<$Res>
+    implements _$DeleteBusinessSettingCopyWith<$Res> {
+  __$DeleteBusinessSettingCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? id = null}) {
-    return _then(
-      _$DeleteBusinessSettingImpl(
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
+  final _DeleteBusinessSetting _self;
+  final $Res Function(_DeleteBusinessSetting) _then;
+
+/// Create a copy of BusinessSettingEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? id = null,}) {
+  return _then(_DeleteBusinessSetting(
+null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
 
-class _$DeleteBusinessSettingImpl implements _DeleteBusinessSetting {
-  const _$DeleteBusinessSettingImpl(this.id);
-
-  @override
-  final int id;
-
-  @override
-  String toString() {
-    return 'BusinessSettingEvent.deleteBusinessSetting(id: $id)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DeleteBusinessSettingImpl &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, id);
-
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DeleteBusinessSettingImplCopyWith<_$DeleteBusinessSettingImpl>
-  get copyWith =>
-      __$$DeleteBusinessSettingImplCopyWithImpl<_$DeleteBusinessSettingImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function(BusinessSettingRequestModel data)
-    addBusinessSetting,
-    required TResult Function() getBusinessSetting,
-    required TResult Function(BusinessSettingRequestModel data, int id)
-    editBusinessSetting,
-    required TResult Function(int id) deleteBusinessSetting,
-  }) {
-    return deleteBusinessSetting(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult? Function()? getBusinessSetting,
-    TResult? Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult? Function(int id)? deleteBusinessSetting,
-  }) {
-    return deleteBusinessSetting?.call(id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function(BusinessSettingRequestModel data)? addBusinessSetting,
-    TResult Function()? getBusinessSetting,
-    TResult Function(BusinessSettingRequestModel data, int id)?
-    editBusinessSetting,
-    TResult Function(int id)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (deleteBusinessSetting != null) {
-      return deleteBusinessSetting(id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AddBusinessSetting value) addBusinessSetting,
-    required TResult Function(_GetBusinessSetting value) getBusinessSetting,
-    required TResult Function(_EditBusinessSetting value) editBusinessSetting,
-    required TResult Function(_DeleteBusinessSetting value)
-    deleteBusinessSetting,
-  }) {
-    return deleteBusinessSetting(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult? Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult? Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult? Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-  }) {
-    return deleteBusinessSetting?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AddBusinessSetting value)? addBusinessSetting,
-    TResult Function(_GetBusinessSetting value)? getBusinessSetting,
-    TResult Function(_EditBusinessSetting value)? editBusinessSetting,
-    TResult Function(_DeleteBusinessSetting value)? deleteBusinessSetting,
-    required TResult orElse(),
-  }) {
-    if (deleteBusinessSetting != null) {
-      return deleteBusinessSetting(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _DeleteBusinessSetting implements BusinessSettingEvent {
-  const factory _DeleteBusinessSetting(final int id) =
-      _$DeleteBusinessSettingImpl;
-
-  int get id;
-
-  /// Create a copy of BusinessSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteBusinessSettingImplCopyWith<_$DeleteBusinessSettingImpl>
-  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$BusinessSettingState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<BusinessSettingRequestModel> data) loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<BusinessSettingRequestModel> data)? loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<BusinessSettingRequestModel> data)? loaded,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BusinessSettingState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'BusinessSettingState()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $BusinessSettingStateCopyWith<$Res> {
-  factory $BusinessSettingStateCopyWith(
-    BusinessSettingState value,
-    $Res Function(BusinessSettingState) then,
-  ) = _$BusinessSettingStateCopyWithImpl<$Res, BusinessSettingState>;
+class $BusinessSettingStateCopyWith<$Res>  {
+$BusinessSettingStateCopyWith(BusinessSettingState _, $Res Function(BusinessSettingState) __);
 }
 
-/// @nodoc
-class _$BusinessSettingStateCopyWithImpl<
-  $Res,
-  $Val extends BusinessSettingState
->
-    implements $BusinessSettingStateCopyWith<$Res> {
-  _$BusinessSettingStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [BusinessSettingState].
+extension BusinessSettingStatePatterns on BusinessSettingState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Error value)?  error,TResult Function( _Loaded value)?  loaded,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Error() when error != null:
+return error(_that);case _Loaded() when loaded != null:
+return loaded(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Error value)  error,required TResult Function( _Loaded value)  loaded,}){
+final _that = this;
+switch (_that) {
+case _Initial():
+return initial(_that);case _Loading():
+return loading(_that);case _Error():
+return error(_that);case _Loaded():
+return loaded(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Error value)?  error,TResult? Function( _Loaded value)?  loaded,}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Error() when error != null:
+return error(_that);case _Loaded() when loaded != null:
+return loaded(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message)?  error,TResult Function( List<BusinessSettingRequestModel> data)?  loaded,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial();case _Loading() when loading != null:
+return loading();case _Error() when error != null:
+return error(_that.message);case _Loaded() when loaded != null:
+return loaded(_that.data);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message)  error,required TResult Function( List<BusinessSettingRequestModel> data)  loaded,}) {final _that = this;
+switch (_that) {
+case _Initial():
+return initial();case _Loading():
+return loading();case _Error():
+return error(_that.message);case _Loaded():
+return loaded(_that.data);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message)?  error,TResult? Function( List<BusinessSettingRequestModel> data)?  loaded,}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial();case _Loading() when loading != null:
+return loading();case _Error() when error != null:
+return error(_that.message);case _Loaded() when loaded != null:
+return loaded(_that.data);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$BusinessSettingStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'BusinessSettingState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<BusinessSettingRequestModel> data) loaded,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<BusinessSettingRequestModel> data)? loaded,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<BusinessSettingRequestModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements BusinessSettingState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$BusinessSettingStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
 
-  @override
-  String toString() {
-    return 'BusinessSettingState.loading()';
-  }
+class _Initial implements BusinessSettingState {
+  const _Initial();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<BusinessSettingRequestModel> data) loaded,
-  }) {
-    return loading();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<BusinessSettingRequestModel> data)? loaded,
-  }) {
-    return loading?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<BusinessSettingRequestModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
-abstract class _Loading implements BusinessSettingState {
-  const factory _Loading() = _$LoadingImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'BusinessSettingState.initial()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Loading implements BusinessSettingState {
+  const _Loading();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'BusinessSettingState.loading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Error implements BusinessSettingState {
+  const _Error(this.message);
+  
+
+ final  String message;
+
+/// Create a copy of BusinessSettingState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'BusinessSettingState.error(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
+abstract mixin class _$ErrorCopyWith<$Res> implements $BusinessSettingStateCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class __$ErrorCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(this._self, this._then);
+
+  final _Error _self;
+  final $Res Function(_Error) _then;
+
+/// Create a copy of BusinessSettingState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(_Error(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$BusinessSettingStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.message);
 
-  @override
-  final String message;
+class _Loaded implements BusinessSettingState {
+  const _Loaded(final  List<BusinessSettingRequestModel> data): _data = data;
+  
 
-  @override
-  String toString() {
-    return 'BusinessSettingState.error(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<BusinessSettingRequestModel> data) loaded,
-  }) {
-    return error(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<BusinessSettingRequestModel> data)? loaded,
-  }) {
-    return error?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<BusinessSettingRequestModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+ final  List<BusinessSettingRequestModel> _data;
+ List<BusinessSettingRequestModel> get data {
+  if (_data is EqualUnmodifiableListView) return _data;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_data);
 }
 
-abstract class _Error implements BusinessSettingState {
-  const factory _Error(final String message) = _$ErrorImpl;
 
-  String get message;
+/// Create a copy of BusinessSettingState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
 
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._data, _data));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_data));
+
+@override
+String toString() {
+  return 'BusinessSettingState.loaded(data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-    _$LoadedImpl value,
-    $Res Function(_$LoadedImpl) then,
-  ) = __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<BusinessSettingRequestModel> data});
-}
+abstract mixin class _$LoadedCopyWith<$Res> implements $BusinessSettingStateCopyWith<$Res> {
+  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
+@useResult
+$Res call({
+ List<BusinessSettingRequestModel> data
+});
 
+
+
+
+}
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$BusinessSettingStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-    _$LoadedImpl _value,
-    $Res Function(_$LoadedImpl) _then,
-  ) : super(_value, _then);
+class __$LoadedCopyWithImpl<$Res>
+    implements _$LoadedCopyWith<$Res> {
+  __$LoadedCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$LoadedImpl(
-        null == data
-            ? _value._data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as List<BusinessSettingRequestModel>,
-      ),
-    );
-  }
+  final _Loaded _self;
+  final $Res Function(_Loaded) _then;
+
+/// Create a copy of BusinessSettingState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
+  return _then(_Loaded(
+null == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
+as List<BusinessSettingRequestModel>,
+  ));
 }
 
-/// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<BusinessSettingRequestModel> data)
-    : _data = data;
-
-  final List<BusinessSettingRequestModel> _data;
-  @override
-  List<BusinessSettingRequestModel> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
-
-  @override
-  String toString() {
-    return 'BusinessSettingState.loaded(data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
-
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<BusinessSettingRequestModel> data) loaded,
-  }) {
-    return loaded(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<BusinessSettingRequestModel> data)? loaded,
-  }) {
-    return loaded?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<BusinessSettingRequestModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _Loaded implements BusinessSettingState {
-  const factory _Loaded(final List<BusinessSettingRequestModel> data) =
-      _$LoadedImpl;
-
-  List<BusinessSettingRequestModel> get data;
-
-  /// Create a copy of BusinessSettingState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

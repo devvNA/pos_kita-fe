@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1255 +9,762 @@ part of 'staff_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$StaffEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getStaffs,
-    required TResult Function(StaffRequestModel data) addStaff,
-    required TResult Function(StaffRequestModel data, int id) editStaff,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getStaffs,
-    TResult? Function(StaffRequestModel data)? addStaff,
-    TResult? Function(StaffRequestModel data, int id)? editStaff,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getStaffs,
-    TResult Function(StaffRequestModel data)? addStaff,
-    TResult Function(StaffRequestModel data, int id)? editStaff,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetStaffs value) getStaffs,
-    required TResult Function(_AddStaff value) addStaff,
-    required TResult Function(_EditStaff value) editStaff,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetStaffs value)? getStaffs,
-    TResult? Function(_AddStaff value)? addStaff,
-    TResult? Function(_EditStaff value)? editStaff,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetStaffs value)? getStaffs,
-    TResult Function(_AddStaff value)? addStaff,
-    TResult Function(_EditStaff value)? editStaff,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StaffEvent);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'StaffEvent()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $StaffEventCopyWith<$Res> {
-  factory $StaffEventCopyWith(
-    StaffEvent value,
-    $Res Function(StaffEvent) then,
-  ) = _$StaffEventCopyWithImpl<$Res, StaffEvent>;
+class $StaffEventCopyWith<$Res>  {
+$StaffEventCopyWith(StaffEvent _, $Res Function(StaffEvent) __);
 }
 
-/// @nodoc
-class _$StaffEventCopyWithImpl<$Res, $Val extends StaffEvent>
-    implements $StaffEventCopyWith<$Res> {
-  _$StaffEventCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [StaffEvent].
+extension StaffEventPatterns on StaffEvent {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,TResult Function( _GetStaffs value)?  getStaffs,TResult Function( _AddStaff value)?  addStaff,TResult Function( _EditStaff value)?  editStaff,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _GetStaffs() when getStaffs != null:
+return getStaffs(_that);case _AddStaff() when addStaff != null:
+return addStaff(_that);case _EditStaff() when editStaff != null:
+return editStaff(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,required TResult Function( _GetStaffs value)  getStaffs,required TResult Function( _AddStaff value)  addStaff,required TResult Function( _EditStaff value)  editStaff,}){
+final _that = this;
+switch (_that) {
+case _Started():
+return started(_that);case _GetStaffs():
+return getStaffs(_that);case _AddStaff():
+return addStaff(_that);case _EditStaff():
+return editStaff(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,TResult? Function( _GetStaffs value)?  getStaffs,TResult? Function( _AddStaff value)?  addStaff,TResult? Function( _EditStaff value)?  editStaff,}){
+final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started(_that);case _GetStaffs() when getStaffs != null:
+return getStaffs(_that);case _AddStaff() when addStaff != null:
+return addStaff(_that);case _EditStaff() when editStaff != null:
+return editStaff(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function()?  getStaffs,TResult Function( StaffRequestModel data)?  addStaff,TResult Function( StaffRequestModel data,  int id)?  editStaff,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started();case _GetStaffs() when getStaffs != null:
+return getStaffs();case _AddStaff() when addStaff != null:
+return addStaff(_that.data);case _EditStaff() when editStaff != null:
+return editStaff(_that.data,_that.id);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function()  getStaffs,required TResult Function( StaffRequestModel data)  addStaff,required TResult Function( StaffRequestModel data,  int id)  editStaff,}) {final _that = this;
+switch (_that) {
+case _Started():
+return started();case _GetStaffs():
+return getStaffs();case _AddStaff():
+return addStaff(_that.data);case _EditStaff():
+return editStaff(_that.data,_that.id);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function()?  getStaffs,TResult? Function( StaffRequestModel data)?  addStaff,TResult? Function( StaffRequestModel data,  int id)?  editStaff,}) {final _that = this;
+switch (_that) {
+case _Started() when started != null:
+return started();case _GetStaffs() when getStaffs != null:
+return getStaffs();case _AddStaff() when addStaff != null:
+return addStaff(_that.data);case _EditStaff() when editStaff != null:
+return editStaff(_that.data,_that.id);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-    _$StartedImpl value,
-    $Res Function(_$StartedImpl) then,
-  ) = __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$StaffEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-    _$StartedImpl _value,
-    $Res Function(_$StartedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'StaffEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getStaffs,
-    required TResult Function(StaffRequestModel data) addStaff,
-    required TResult Function(StaffRequestModel data, int id) editStaff,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getStaffs,
-    TResult? Function(StaffRequestModel data)? addStaff,
-    TResult? Function(StaffRequestModel data, int id)? editStaff,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getStaffs,
-    TResult Function(StaffRequestModel data)? addStaff,
-    TResult Function(StaffRequestModel data, int id)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetStaffs value) getStaffs,
-    required TResult Function(_AddStaff value) addStaff,
-    required TResult Function(_EditStaff value) editStaff,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetStaffs value)? getStaffs,
-    TResult? Function(_AddStaff value)? addStaff,
-    TResult? Function(_EditStaff value)? editStaff,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetStaffs value)? getStaffs,
-    TResult Function(_AddStaff value)? addStaff,
-    TResult Function(_EditStaff value)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements StaffEvent {
-  const factory _Started() = _$StartedImpl;
-}
-
-/// @nodoc
-abstract class _$$GetStaffsImplCopyWith<$Res> {
-  factory _$$GetStaffsImplCopyWith(
-    _$GetStaffsImpl value,
-    $Res Function(_$GetStaffsImpl) then,
-  ) = __$$GetStaffsImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetStaffsImplCopyWithImpl<$Res>
-    extends _$StaffEventCopyWithImpl<$Res, _$GetStaffsImpl>
-    implements _$$GetStaffsImplCopyWith<$Res> {
-  __$$GetStaffsImplCopyWithImpl(
-    _$GetStaffsImpl _value,
-    $Res Function(_$GetStaffsImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$GetStaffsImpl implements _GetStaffs {
-  const _$GetStaffsImpl();
 
-  @override
-  String toString() {
-    return 'StaffEvent.getStaffs()';
-  }
+class _Started implements StaffEvent {
+  const _Started();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetStaffsImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getStaffs,
-    required TResult Function(StaffRequestModel data) addStaff,
-    required TResult Function(StaffRequestModel data, int id) editStaff,
-  }) {
-    return getStaffs();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getStaffs,
-    TResult? Function(StaffRequestModel data)? addStaff,
-    TResult? Function(StaffRequestModel data, int id)? editStaff,
-  }) {
-    return getStaffs?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getStaffs,
-    TResult Function(StaffRequestModel data)? addStaff,
-    TResult Function(StaffRequestModel data, int id)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (getStaffs != null) {
-      return getStaffs();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetStaffs value) getStaffs,
-    required TResult Function(_AddStaff value) addStaff,
-    required TResult Function(_EditStaff value) editStaff,
-  }) {
-    return getStaffs(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetStaffs value)? getStaffs,
-    TResult? Function(_AddStaff value)? addStaff,
-    TResult? Function(_EditStaff value)? editStaff,
-  }) {
-    return getStaffs?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetStaffs value)? getStaffs,
-    TResult Function(_AddStaff value)? addStaff,
-    TResult Function(_EditStaff value)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (getStaffs != null) {
-      return getStaffs(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started);
 }
 
-abstract class _GetStaffs implements StaffEvent {
-  const factory _GetStaffs() = _$GetStaffsImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'StaffEvent.started()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _GetStaffs implements StaffEvent {
+  const _GetStaffs();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _GetStaffs);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'StaffEvent.getStaffs()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _AddStaff implements StaffEvent {
+  const _AddStaff(this.data);
+  
+
+ final  StaffRequestModel data;
+
+/// Create a copy of StaffEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddStaffCopyWith<_AddStaff> get copyWith => __$AddStaffCopyWithImpl<_AddStaff>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddStaff&&(identical(other.data, data) || other.data == data));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,data);
+
+@override
+String toString() {
+  return 'StaffEvent.addStaff(data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$AddStaffImplCopyWith<$Res> {
-  factory _$$AddStaffImplCopyWith(
-    _$AddStaffImpl value,
-    $Res Function(_$AddStaffImpl) then,
-  ) = __$$AddStaffImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({StaffRequestModel data});
+abstract mixin class _$AddStaffCopyWith<$Res> implements $StaffEventCopyWith<$Res> {
+  factory _$AddStaffCopyWith(_AddStaff value, $Res Function(_AddStaff) _then) = __$AddStaffCopyWithImpl;
+@useResult
+$Res call({
+ StaffRequestModel data
+});
+
+
+
+
+}
+/// @nodoc
+class __$AddStaffCopyWithImpl<$Res>
+    implements _$AddStaffCopyWith<$Res> {
+  __$AddStaffCopyWithImpl(this._self, this._then);
+
+  final _AddStaff _self;
+  final $Res Function(_AddStaff) _then;
+
+/// Create a copy of StaffEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
+  return _then(_AddStaff(
+null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as StaffRequestModel,
+  ));
 }
 
-/// @nodoc
-class __$$AddStaffImplCopyWithImpl<$Res>
-    extends _$StaffEventCopyWithImpl<$Res, _$AddStaffImpl>
-    implements _$$AddStaffImplCopyWith<$Res> {
-  __$$AddStaffImplCopyWithImpl(
-    _$AddStaffImpl _value,
-    $Res Function(_$AddStaffImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$AddStaffImpl(
-        null == data
-            ? _value.data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as StaffRequestModel,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$AddStaffImpl implements _AddStaff {
-  const _$AddStaffImpl(this.data);
 
-  @override
-  final StaffRequestModel data;
+class _EditStaff implements StaffEvent {
+  const _EditStaff(this.data, this.id);
+  
 
-  @override
-  String toString() {
-    return 'StaffEvent.addStaff(data: $data)';
-  }
+ final  StaffRequestModel data;
+ final  int id;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddStaffImpl &&
-            (identical(other.data, data) || other.data == data));
-  }
+/// Create a copy of StaffEvent
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EditStaffCopyWith<_EditStaff> get copyWith => __$EditStaffCopyWithImpl<_EditStaff>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, data);
 
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddStaffImplCopyWith<_$AddStaffImpl> get copyWith =>
-      __$$AddStaffImplCopyWithImpl<_$AddStaffImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getStaffs,
-    required TResult Function(StaffRequestModel data) addStaff,
-    required TResult Function(StaffRequestModel data, int id) editStaff,
-  }) {
-    return addStaff(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getStaffs,
-    TResult? Function(StaffRequestModel data)? addStaff,
-    TResult? Function(StaffRequestModel data, int id)? editStaff,
-  }) {
-    return addStaff?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getStaffs,
-    TResult Function(StaffRequestModel data)? addStaff,
-    TResult Function(StaffRequestModel data, int id)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (addStaff != null) {
-      return addStaff(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetStaffs value) getStaffs,
-    required TResult Function(_AddStaff value) addStaff,
-    required TResult Function(_EditStaff value) editStaff,
-  }) {
-    return addStaff(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetStaffs value)? getStaffs,
-    TResult? Function(_AddStaff value)? addStaff,
-    TResult? Function(_EditStaff value)? editStaff,
-  }) {
-    return addStaff?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetStaffs value)? getStaffs,
-    TResult Function(_AddStaff value)? addStaff,
-    TResult Function(_EditStaff value)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (addStaff != null) {
-      return addStaff(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EditStaff&&(identical(other.data, data) || other.data == data)&&(identical(other.id, id) || other.id == id));
 }
 
-abstract class _AddStaff implements StaffEvent {
-  const factory _AddStaff(final StaffRequestModel data) = _$AddStaffImpl;
 
-  StaffRequestModel get data;
+@override
+int get hashCode => Object.hash(runtimeType,data,id);
 
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AddStaffImplCopyWith<_$AddStaffImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'StaffEvent.editStaff(data: $data, id: $id)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$EditStaffImplCopyWith<$Res> {
-  factory _$$EditStaffImplCopyWith(
-    _$EditStaffImpl value,
-    $Res Function(_$EditStaffImpl) then,
-  ) = __$$EditStaffImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({StaffRequestModel data, int id});
-}
+abstract mixin class _$EditStaffCopyWith<$Res> implements $StaffEventCopyWith<$Res> {
+  factory _$EditStaffCopyWith(_EditStaff value, $Res Function(_EditStaff) _then) = __$EditStaffCopyWithImpl;
+@useResult
+$Res call({
+ StaffRequestModel data, int id
+});
 
+
+
+
+}
 /// @nodoc
-class __$$EditStaffImplCopyWithImpl<$Res>
-    extends _$StaffEventCopyWithImpl<$Res, _$EditStaffImpl>
-    implements _$$EditStaffImplCopyWith<$Res> {
-  __$$EditStaffImplCopyWithImpl(
-    _$EditStaffImpl _value,
-    $Res Function(_$EditStaffImpl) _then,
-  ) : super(_value, _then);
+class __$EditStaffCopyWithImpl<$Res>
+    implements _$EditStaffCopyWith<$Res> {
+  __$EditStaffCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? data = null, Object? id = null}) {
-    return _then(
-      _$EditStaffImpl(
-        null == data
-            ? _value.data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as StaffRequestModel,
-        null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
+  final _EditStaff _self;
+  final $Res Function(_EditStaff) _then;
+
+/// Create a copy of StaffEvent
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? data = null,Object? id = null,}) {
+  return _then(_EditStaff(
+null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as StaffRequestModel,null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
 
-class _$EditStaffImpl implements _EditStaff {
-  const _$EditStaffImpl(this.data, this.id);
-
-  @override
-  final StaffRequestModel data;
-  @override
-  final int id;
-
-  @override
-  String toString() {
-    return 'StaffEvent.editStaff(data: $data, id: $id)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EditStaffImpl &&
-            (identical(other.data, data) || other.data == data) &&
-            (identical(other.id, id) || other.id == id));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, data, id);
-
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EditStaffImplCopyWith<_$EditStaffImpl> get copyWith =>
-      __$$EditStaffImplCopyWithImpl<_$EditStaffImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() getStaffs,
-    required TResult Function(StaffRequestModel data) addStaff,
-    required TResult Function(StaffRequestModel data, int id) editStaff,
-  }) {
-    return editStaff(data, id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? getStaffs,
-    TResult? Function(StaffRequestModel data)? addStaff,
-    TResult? Function(StaffRequestModel data, int id)? editStaff,
-  }) {
-    return editStaff?.call(data, id);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? getStaffs,
-    TResult Function(StaffRequestModel data)? addStaff,
-    TResult Function(StaffRequestModel data, int id)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (editStaff != null) {
-      return editStaff(data, id);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_GetStaffs value) getStaffs,
-    required TResult Function(_AddStaff value) addStaff,
-    required TResult Function(_EditStaff value) editStaff,
-  }) {
-    return editStaff(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_GetStaffs value)? getStaffs,
-    TResult? Function(_AddStaff value)? addStaff,
-    TResult? Function(_EditStaff value)? editStaff,
-  }) {
-    return editStaff?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_GetStaffs value)? getStaffs,
-    TResult Function(_AddStaff value)? addStaff,
-    TResult Function(_EditStaff value)? editStaff,
-    required TResult orElse(),
-  }) {
-    if (editStaff != null) {
-      return editStaff(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _EditStaff implements StaffEvent {
-  const factory _EditStaff(final StaffRequestModel data, final int id) =
-      _$EditStaffImpl;
-
-  StaffRequestModel get data;
-  int get id;
-
-  /// Create a copy of StaffEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EditStaffImplCopyWith<_$EditStaffImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$StaffState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<UserModel> data) loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<UserModel> data)? loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<UserModel> data)? loaded,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StaffState);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'StaffState()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $StaffStateCopyWith<$Res> {
-  factory $StaffStateCopyWith(
-    StaffState value,
-    $Res Function(StaffState) then,
-  ) = _$StaffStateCopyWithImpl<$Res, StaffState>;
+class $StaffStateCopyWith<$Res>  {
+$StaffStateCopyWith(StaffState _, $Res Function(StaffState) __);
 }
 
-/// @nodoc
-class _$StaffStateCopyWithImpl<$Res, $Val extends StaffState>
-    implements $StaffStateCopyWith<$Res> {
-  _$StaffStateCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [StaffState].
+extension StaffStatePatterns on StaffState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( _Loading value)?  loading,TResult Function( _Error value)?  error,TResult Function( _Loaded value)?  loaded,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Error() when error != null:
+return error(_that);case _Loaded() when loaded != null:
+return loaded(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( _Loading value)  loading,required TResult Function( _Error value)  error,required TResult Function( _Loaded value)  loaded,}){
+final _that = this;
+switch (_that) {
+case _Initial():
+return initial(_that);case _Loading():
+return loading(_that);case _Error():
+return error(_that);case _Loaded():
+return loaded(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( _Loading value)?  loading,TResult? Function( _Error value)?  error,TResult? Function( _Loaded value)?  loaded,}){
+final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial(_that);case _Loading() when loading != null:
+return loading(_that);case _Error() when error != null:
+return error(_that);case _Loaded() when loaded != null:
+return loaded(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( String message)?  error,TResult Function( List<UserModel> data)?  loaded,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial();case _Loading() when loading != null:
+return loading();case _Error() when error != null:
+return error(_that.message);case _Loaded() when loaded != null:
+return loaded(_that.data);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( String message)  error,required TResult Function( List<UserModel> data)  loaded,}) {final _that = this;
+switch (_that) {
+case _Initial():
+return initial();case _Loading():
+return loading();case _Error():
+return error(_that.message);case _Loaded():
+return loaded(_that.data);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( String message)?  error,TResult? Function( List<UserModel> data)?  loaded,}) {final _that = this;
+switch (_that) {
+case _Initial() when initial != null:
+return initial();case _Loading() when loading != null:
+return loading();case _Error() when error != null:
+return error(_that.message);case _Loaded() when loaded != null:
+return loaded(_that.data);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-    _$InitialImpl value,
-    $Res Function(_$InitialImpl) then,
-  ) = __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$StaffStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-    _$InitialImpl _value,
-    $Res Function(_$InitialImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'StaffState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<UserModel> data) loaded,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<UserModel> data)? loaded,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<UserModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements StaffState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-    _$LoadingImpl value,
-    $Res Function(_$LoadingImpl) then,
-  ) = __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$StaffStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-    _$LoadingImpl _value,
-    $Res Function(_$LoadingImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl();
 
-  @override
-  String toString() {
-    return 'StaffState.loading()';
-  }
+class _Initial implements StaffState {
+  const _Initial();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<UserModel> data) loaded,
-  }) {
-    return loading();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<UserModel> data)? loaded,
-  }) {
-    return loading?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<UserModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Initial);
 }
 
-abstract class _Loading implements StaffState {
-  const factory _Loading() = _$LoadingImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'StaffState.initial()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Loading implements StaffState {
+  const _Loading();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loading);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'StaffState.loading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Error implements StaffState {
+  const _Error(this.message);
+  
+
+ final  String message;
+
+/// Create a copy of StaffState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ErrorCopyWith<_Error> get copyWith => __$ErrorCopyWithImpl<_Error>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Error&&(identical(other.message, message) || other.message == message));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,message);
+
+@override
+String toString() {
+  return 'StaffState.error(message: $message)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-    _$ErrorImpl value,
-    $Res Function(_$ErrorImpl) then,
-  ) = __$$ErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String message});
+abstract mixin class _$ErrorCopyWith<$Res> implements $StaffStateCopyWith<$Res> {
+  factory _$ErrorCopyWith(_Error value, $Res Function(_Error) _then) = __$ErrorCopyWithImpl;
+@useResult
+$Res call({
+ String message
+});
+
+
+
+
+}
+/// @nodoc
+class __$ErrorCopyWithImpl<$Res>
+    implements _$ErrorCopyWith<$Res> {
+  __$ErrorCopyWithImpl(this._self, this._then);
+
+  final _Error _self;
+  final $Res Function(_Error) _then;
+
+/// Create a copy of StaffState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? message = null,}) {
+  return _then(_Error(
+null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$StaffStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-    _$ErrorImpl _value,
-    $Res Function(_$ErrorImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? message = null}) {
-    return _then(
-      _$ErrorImpl(
-        null == message
-            ? _value.message
-            : message // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(this.message);
 
-  @override
-  final String message;
+class _Loaded implements StaffState {
+  const _Loaded(final  List<UserModel> data): _data = data;
+  
 
-  @override
-  String toString() {
-    return 'StaffState.error(message: $message)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<UserModel> data) loaded,
-  }) {
-    return error(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<UserModel> data)? loaded,
-  }) {
-    return error?.call(message);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<UserModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(message);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return error(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return error?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (error != null) {
-      return error(this);
-    }
-    return orElse();
-  }
+ final  List<UserModel> _data;
+ List<UserModel> get data {
+  if (_data is EqualUnmodifiableListView) return _data;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_data);
 }
 
-abstract class _Error implements StaffState {
-  const factory _Error(final String message) = _$ErrorImpl;
 
-  String get message;
+/// Create a copy of StaffState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LoadedCopyWith<_Loaded> get copyWith => __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
 
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Loaded&&const DeepCollectionEquality().equals(other._data, _data));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_data));
+
+@override
+String toString() {
+  return 'StaffState.loaded(data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-    _$LoadedImpl value,
-    $Res Function(_$LoadedImpl) then,
-  ) = __$$LoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<UserModel> data});
-}
+abstract mixin class _$LoadedCopyWith<$Res> implements $StaffStateCopyWith<$Res> {
+  factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) _then) = __$LoadedCopyWithImpl;
+@useResult
+$Res call({
+ List<UserModel> data
+});
 
+
+
+
+}
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$StaffStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-    _$LoadedImpl _value,
-    $Res Function(_$LoadedImpl) _then,
-  ) : super(_value, _then);
+class __$LoadedCopyWithImpl<$Res>
+    implements _$LoadedCopyWith<$Res> {
+  __$LoadedCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? data = null}) {
-    return _then(
-      _$LoadedImpl(
-        null == data
-            ? _value._data
-            : data // ignore: cast_nullable_to_non_nullable
-                  as List<UserModel>,
-      ),
-    );
-  }
+  final _Loaded _self;
+  final $Res Function(_Loaded) _then;
+
+/// Create a copy of StaffState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? data = null,}) {
+  return _then(_Loaded(
+null == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
+as List<UserModel>,
+  ));
 }
 
-/// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<UserModel> data) : _data = data;
-
-  final List<UserModel> _data;
-  @override
-  List<UserModel> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
-
-  @override
-  String toString() {
-    return 'StaffState.loaded(data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._data, _data));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
-
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function(List<UserModel> data) loaded,
-  }) {
-    return loaded(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function(List<UserModel> data)? loaded,
-  }) {
-    return loaded?.call(data);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function(List<UserModel> data)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(data);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
-    required TResult Function(_Loaded value) loaded,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_Loaded value)? loaded,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_Loaded value)? loaded,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
 }
 
-abstract class _Loaded implements StaffState {
-  const factory _Loaded(final List<UserModel> data) = _$LoadedImpl;
-
-  List<UserModel> get data;
-
-  /// Create a copy of StaffState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

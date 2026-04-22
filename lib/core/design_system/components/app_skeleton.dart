@@ -72,9 +72,9 @@ class _SkeletonState extends State<Skeleton>
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors: [
-                (widget.color ?? AppColors.neutral200).withOpacity(0.5),
+                (widget.color ?? AppColors.neutral200).withValues(alpha: 0.5),
                 widget.color ?? AppColors.neutral200,
-                (widget.color ?? AppColors.neutral200).withOpacity(0.5),
+                (widget.color ?? AppColors.neutral200).withValues(alpha: 0.5),
               ],
               stops: [
                 _animation.value - 0.5,
@@ -164,8 +164,8 @@ class ProductListSkeleton extends StatelessWidget {
     return ListView.separated(
       padding: AppSpacing.screenPadding,
       itemCount: itemCount,
-      separatorBuilder: (_, __) => AppSpacing.vGapSm,
-      itemBuilder: (_, __) => const ProductCardSkeleton(),
+      separatorBuilder: (_, _) => AppSpacing.vGapSm,
+      itemBuilder: (_, _) => const ProductCardSkeleton(),
     );
   }
 }
@@ -212,7 +212,7 @@ class StatGridSkeleton extends StatelessWidget {
         childAspectRatio: 1.5,
       ),
       itemCount: itemCount,
-      itemBuilder: (_, __) => const StatCardSkeleton(),
+      itemBuilder: (_, _) => const StatCardSkeleton(),
     );
   }
 }
