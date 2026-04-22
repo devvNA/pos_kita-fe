@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pos_kita/core/design_system/tokens/colors.dart';
+import 'package:pos_kita/core/design_system/design_system.dart';
 import 'package:pos_kita/core/extensions/int_ext.dart';
 import 'package:pos_kita/core/extensions/string_ext.dart';
 import 'package:pos_kita/data/dataoutputs/cwb_print.dart';
@@ -10,10 +10,7 @@ import 'package:pos_kita/presentation/home/pages/home_page.dart';
 import 'package:pos_kita/presentation/items/bloc/product/product_bloc.dart';
 import 'package:print_bluetooth_thermal/print_bluetooth_thermal.dart';
 
-import '../../../core/components/spaces.dart';
-
 class InvoicePage extends StatefulWidget {
-  // final List<ProductQtyModel> orders;
   final double nominal;
   final double totalPrice;
   final Transaction transaction;
@@ -30,19 +27,15 @@ class InvoicePage extends StatefulWidget {
 }
 
 class _InvoicePageState extends State<InvoicePage> {
-  // List<ProductQuantity> orders = [];
-  // double subtotal = 0;
-  // double tax = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Text(
-          'Nota ${widget.transaction.orderNumber}',
-          style: TextStyle(
-            color: AppColors.white,
-            fontSize: 18,
+          'Nota #${widget.transaction.orderNumber}',
+          style: AppTypography.titleLarge.copyWith(
+            color: AppColors.onPrimary,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -52,172 +45,173 @@ class _InvoicePageState extends State<InvoicePage> {
             context.read<CheckoutBloc>().add(const CheckoutEvent.started());
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return const HomePage();
-                },
-              ),
+              MaterialPageRoute(builder: (context) => const HomePage()),
             );
           },
-          icon: const Icon(Icons.arrow_back_ios, color: AppColors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: AppColors.onPrimary),
         ),
       ),
       body: Column(
         children: [
-          Container(
-            height: 80,
-            width: double.infinity,
-            margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+          // Header: Total & Change
+          Padding(
+            padding: AppSpacing.allMd,
+            child: AppCard(
+              variant: AppCardVariant.elevated,
+              backgroundColor: AppColors.primary,
+              padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'Total Bayar',
+                          style: AppTypography.bodySmall.copyWith(
+                            color: Colors.white.withValues(alpha: 0.8),
+                          ),
+                        ),
+                        AppSpacing.vGapXs,
+                        Text(
+                          widget.totalPrice.currencyFormatRp,
+                          style: AppTypography.titleLarge.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: 40,
+                    width: 1,
+                    color: Colors.white.withValues(alpha: 0.2),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          'Kembalian',
+                          style: AppTypography.bodySmall.copyWith(
+                            color: Colors.white.withValues(alpha: 0.8),
+                          ),
+                        ),
+                        AppSpacing.vGapXs,
+                        Text(
+                          (widget.nominal - widget.totalPrice).currencyFormatRp,
+                          style: AppTypography.titleLarge.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      widget.totalPrice.currencyFormatRp,
-                      style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      'Total Pembayaran',
-                      style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+                const Icon(
+                  Icons.receipt_long_outlined,
+                  size: 18,
+                  color: AppColors.textTertiary,
                 ),
-                Container(height: 80, width: 1, color: AppColors.grey),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${widget.nominal - widget.totalPrice}'
-                          .currencyFormatRpV3,
-                      style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                    Text(
-                      'Kembalian',
-                      style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+                AppSpacing.hGapSm,
+                Text(
+                  'Rincian Produk',
+                  style: AppTypography.labelMedium.copyWith(
+                    color: AppColors.textSecondary,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
           ),
-          const Divider(),
+          AppSpacing.vGapSm,
+
+          // Order Items
           Expanded(
             child: BlocBuilder<CheckoutBloc, CheckoutState>(
               builder: (context, state) {
                 return state.maybeWhen(
-                  orElse: () {
-                    return const Center(child: CircularProgressIndicator());
-                  },
-                  success: (orders, total, tax, subtotal, totalPayment, qty) {
-                    return ListView.builder(
-                      // padding: const EdgeInsets.symmetric(horizontal: 16),
+                  orElse: () =>
+                      const Center(child: CircularProgressIndicator()),
+                  success: (orders, _, _, _, _, _) {
+                    return ListView.separated(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md,
+                      ),
                       itemCount: orders.length,
+                      separatorBuilder: (_, _) => AppSpacing.vGapXs,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(
-                            orders[index].product.name ?? '',
-                            style: TextStyle(
-                              color: AppColors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          subtitle: Text(
-                            '${orders[index].product.price!.currencyFormatRpV3} x ${orders[index].quantity}',
-                            style: TextStyle(
-                              color: AppColors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          trailing: Text(
-                            (orders[index].product.price!.toDouble *
-                                    orders[index].quantity)
-                                .currencyFormatRp,
-                            style: TextStyle(
-                              color: AppColors.black,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                            ),
+                        final order = orders[index];
+                        return AppCard(
+                          variant: AppCardVariant.flat,
+                          padding: AppSpacing.allSm,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      order.product.name ?? '-',
+                                      style: AppTypography.bodyMedium.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.textPrimary,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${order.product.price!.currencyFormatRpV3} x ${order.quantity}',
+                                      style: AppTypography.bodySmall.copyWith(
+                                        color: AppColors.textTertiary,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Text(
+                                (order.product.price!.toDouble * order.quantity)
+                                    .currencyFormatRp,
+                                style: AppTypography.bodyMedium.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColors.textPrimary,
+                                ),
+                              ),
+                            ],
                           ),
                         );
                       },
                     );
                   },
                 );
-                // return ListView.builder(
-                //   // padding: const EdgeInsets.symmetric(horizontal: 16),
-                //   itemCount: widget.orders.length,
-                //   itemBuilder: (context, index) {
-                //     return ListTile(
-                //       title: Text(
-                //         widget.orders[index].product.name,
-                //         style: TextStyle(
-                //           color: AppColors.black,
-                //           fontSize: 16,
-                //           fontWeight: FontWeight.w400,
-                //         ),
-                //       ),
-                //       subtitle: Text(
-                //         '${widget.orders[index].product.price} x ${widget.orders[index].qty}',
-                //         style: TextStyle(
-                //           color: AppColors.black,
-                //           fontSize: 16,
-                //           fontWeight: FontWeight.w400,
-                //         ),
-                //       ),
-                //       trailing: Text(
-                //         (widget.orders[index].product.price *
-                //                 widget.orders[index].qty)
-                //             .currencyFormatRp,
-                //         style: TextStyle(
-                //           color: AppColors.black,
-                //           fontSize: 16,
-                //           fontWeight: FontWeight.w400,
-                //         ),
-                //       ),
-                //     );
-                //   },
-                // );
               },
             ),
           ),
-          const Divider(),
+
+          // Bottom Actions
           BlocBuilder<CheckoutBloc, CheckoutState>(
             builder: (context, state) {
               return state.maybeWhen(
-                orElse: () {
-                  return const Center(child: CircularProgressIndicator());
-                },
+                orElse: () => const SizedBox(),
                 success: (cart, discount, tax, subtotal, total, totalItems) {
                   return Container(
-                    height: 240,
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: AppSpacing.allLg,
+                    decoration: BoxDecoration(
+                      color: AppColors.surface,
+                      boxShadow: AppShadows.md,
+                    ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        const SpaceHeight(16.0),
-                        InkWell(
-                          onTap: () async {
+                        AppButton.outlined(
+                          width: double.infinity,
+                          onPressed: () async {
                             final printValue = await CwbPrint.instance
                                 .printOrderV2(
                                   cart,
@@ -235,67 +229,29 @@ class _InvoicePageState extends State<InvoicePage> {
                                 );
                             await PrintBluetoothThermal.writeBytes(printValue);
                           },
-                          child: Container(
-                            width: double.infinity,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade300,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.print, color: AppColors.black),
-                                  const SpaceWidth(16),
-                                  Text(
-                                    'CETAK NOTA',
-                                    style: TextStyle(
-                                      color: AppColors.black,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                          label: 'Cetak Nota',
+                          prefixIcon: const Icon(Icons.print_outlined),
                         ),
-                        SpaceHeight(16),
-                        InkWell(
-                          onTap: () {
+                        AppSpacing.vGapMd,
+                        AppButton.filled(
+                          width: double.infinity,
+                          onPressed: () {
                             context.read<CheckoutBloc>().add(
                               const CheckoutEvent.started(),
                             );
                             context.read<ProductBloc>().add(
                               const ProductEvent.getProducts(),
                             );
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) {
-                                  return const HomePage();
-                                },
+                                builder: (context) => const HomePage(),
                               ),
                             );
                           },
-                          child: Container(
-                            width: double.infinity,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'SELESAI',
-                                style: TextStyle(
-                                  color: AppColors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              ),
-                            ),
+                          label: 'Transaksi Baru',
+                          prefixIcon: const Icon(
+                            Icons.add_shopping_cart_rounded,
                           ),
                         ),
                       ],

@@ -590,13 +590,13 @@ class _HomePageState extends State<HomePage>
                         );
                       },
                       offline: () {
-                        // offline, not check stock
+                        // offline, tetap cek stok tersimpan lokal
                         return _buildProductCard(
                           filteredProducts[index],
                           buttonKey,
                           outletData,
                           taxs,
-                          false,
+                          true,
                           false,
                         );
                       },
@@ -676,13 +676,13 @@ class _HomePageState extends State<HomePage>
                         );
                       },
                       offline: () {
-                        // offline, not check stock
+                        // offline, tetap cek stok tersimpan lokal
                         return _buildProductCard(
                           filteredProducts[index],
                           buttonKey,
                           outletData,
                           taxs,
-                          false,
+                          true,
                           false,
                         );
                       },
@@ -865,11 +865,9 @@ class _HomePageState extends State<HomePage>
   ) {
     int getStock() {
       if (product.stocks == null || product.stocks!.isEmpty) {
-        // fallback ke field `stock` jika ada, atau 0
         return product.stock ?? 0;
       }
 
-      // cari stok untuk outlet tertentu; bila tidak ada pakai stok pertama
       final match = product.stocks!
           .firstWhere(
             (e) => e.outletId == outletData?.id,
@@ -880,16 +878,44 @@ class _HomePageState extends State<HomePage>
       return match ?? 0;
     }
 
+    int getCartQuantity() {
+      return context.read<CheckoutBloc>().state.maybeWhen(
+        success: (cart, _, _, _, _, _) {
+          final index = cart.indexWhere(
+            (item) => item.product.id == product.id,
+          );
+          if (index == -1) {
+            return 0;
+          }
+
+          return cart[index].quantity;
+        },
+        orElse: () => 0,
+      );
+    }
+
     // Hanya hitung stok bila diperlukan
     final int stock = (validateStock || showStock) ? getStock() : 0;
 
     return InkWell(
       key: buttonKey,
       onTap: () async {
+        final cartQuantity = validateStock ? getCartQuantity() : 0;
+
         if (validateStock && stock <= 0) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: const Text("Stok Habis"),
+              backgroundColor: AppColors.error,
+            ),
+          );
+          return;
+        }
+
+        if (validateStock && cartQuantity >= stock) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Stok ${product.name ?? 'produk'} tidak mencukupi'),
               backgroundColor: AppColors.error,
             ),
           );
@@ -922,8 +948,14 @@ class _HomePageState extends State<HomePage>
         );
 
         await Future.delayed(const Duration(milliseconds: 700));
+        if (!mounted) return;
+
         context.read<CheckoutBloc>().add(
-          CheckoutEvent.addToCart(product: product, businessSetting: taxs),
+          CheckoutEvent.addToCart(
+            product: product,
+            businessSetting: taxs,
+            maxStock: stock,
+          ),
         );
       },
       child: Card(

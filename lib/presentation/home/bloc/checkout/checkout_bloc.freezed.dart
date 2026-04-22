@@ -131,11 +131,11 @@ return removeDiscount(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting)?  addToCart,TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting)?  removeFromCart,TResult Function( BusinessSettingRequestModel discount)?  addDiscount,TResult Function( BusinessSettingRequestModel discount)?  removeDiscount,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  started,TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting,  int maxStock)?  addToCart,TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting)?  removeFromCart,TResult Function( BusinessSettingRequestModel discount)?  addDiscount,TResult Function( BusinessSettingRequestModel discount)?  removeDiscount,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
 return started();case _AddToCart() when addToCart != null:
-return addToCart(_that.product,_that.businessSetting);case _RemoveFromCart() when removeFromCart != null:
+return addToCart(_that.product,_that.businessSetting,_that.maxStock);case _RemoveFromCart() when removeFromCart != null:
 return removeFromCart(_that.product,_that.businessSetting);case _AddDiscount() when addDiscount != null:
 return addDiscount(_that.discount);case _RemoveDiscount() when removeDiscount != null:
 return removeDiscount(_that.discount);case _:
@@ -156,11 +156,11 @@ return removeDiscount(_that.discount);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting)  addToCart,required TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting)  removeFromCart,required TResult Function( BusinessSettingRequestModel discount)  addDiscount,required TResult Function( BusinessSettingRequestModel discount)  removeDiscount,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  started,required TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting,  int maxStock)  addToCart,required TResult Function( Product product,  List<BusinessSettingRequestModel> businessSetting)  removeFromCart,required TResult Function( BusinessSettingRequestModel discount)  addDiscount,required TResult Function( BusinessSettingRequestModel discount)  removeDiscount,}) {final _that = this;
 switch (_that) {
 case _Started():
 return started();case _AddToCart():
-return addToCart(_that.product,_that.businessSetting);case _RemoveFromCart():
+return addToCart(_that.product,_that.businessSetting,_that.maxStock);case _RemoveFromCart():
 return removeFromCart(_that.product,_that.businessSetting);case _AddDiscount():
 return addDiscount(_that.discount);case _RemoveDiscount():
 return removeDiscount(_that.discount);case _:
@@ -180,11 +180,11 @@ return removeDiscount(_that.discount);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function( Product product,  List<BusinessSettingRequestModel> businessSetting)?  addToCart,TResult? Function( Product product,  List<BusinessSettingRequestModel> businessSetting)?  removeFromCart,TResult? Function( BusinessSettingRequestModel discount)?  addDiscount,TResult? Function( BusinessSettingRequestModel discount)?  removeDiscount,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  started,TResult? Function( Product product,  List<BusinessSettingRequestModel> businessSetting,  int maxStock)?  addToCart,TResult? Function( Product product,  List<BusinessSettingRequestModel> businessSetting)?  removeFromCart,TResult? Function( BusinessSettingRequestModel discount)?  addDiscount,TResult? Function( BusinessSettingRequestModel discount)?  removeDiscount,}) {final _that = this;
 switch (_that) {
 case _Started() when started != null:
 return started();case _AddToCart() when addToCart != null:
-return addToCart(_that.product,_that.businessSetting);case _RemoveFromCart() when removeFromCart != null:
+return addToCart(_that.product,_that.businessSetting,_that.maxStock);case _RemoveFromCart() when removeFromCart != null:
 return removeFromCart(_that.product,_that.businessSetting);case _AddDiscount() when addDiscount != null:
 return addDiscount(_that.discount);case _RemoveDiscount() when removeDiscount != null:
 return removeDiscount(_that.discount);case _:
@@ -231,7 +231,7 @@ String toString() {
 
 
 class _AddToCart implements CheckoutEvent {
-  const _AddToCart({required this.product, required final  List<BusinessSettingRequestModel> businessSetting}): _businessSetting = businessSetting;
+  const _AddToCart({required this.product, required final  List<BusinessSettingRequestModel> businessSetting, required this.maxStock}): _businessSetting = businessSetting;
   
 
  final  Product product;
@@ -242,6 +242,7 @@ class _AddToCart implements CheckoutEvent {
   return EqualUnmodifiableListView(_businessSetting);
 }
 
+ final  int maxStock;
 
 /// Create a copy of CheckoutEvent
 /// with the given fields replaced by the non-null parameter values.
@@ -253,16 +254,16 @@ _$AddToCartCopyWith<_AddToCart> get copyWith => __$AddToCartCopyWithImpl<_AddToC
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToCart&&(identical(other.product, product) || other.product == product)&&const DeepCollectionEquality().equals(other._businessSetting, _businessSetting));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddToCart&&(identical(other.product, product) || other.product == product)&&const DeepCollectionEquality().equals(other._businessSetting, _businessSetting)&&(identical(other.maxStock, maxStock) || other.maxStock == maxStock));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,product,const DeepCollectionEquality().hash(_businessSetting));
+int get hashCode => Object.hash(runtimeType,product,const DeepCollectionEquality().hash(_businessSetting),maxStock);
 
 @override
 String toString() {
-  return 'CheckoutEvent.addToCart(product: $product, businessSetting: $businessSetting)';
+  return 'CheckoutEvent.addToCart(product: $product, businessSetting: $businessSetting, maxStock: $maxStock)';
 }
 
 
@@ -273,7 +274,7 @@ abstract mixin class _$AddToCartCopyWith<$Res> implements $CheckoutEventCopyWith
   factory _$AddToCartCopyWith(_AddToCart value, $Res Function(_AddToCart) _then) = __$AddToCartCopyWithImpl;
 @useResult
 $Res call({
- Product product, List<BusinessSettingRequestModel> businessSetting
+ Product product, List<BusinessSettingRequestModel> businessSetting, int maxStock
 });
 
 
@@ -290,11 +291,12 @@ class __$AddToCartCopyWithImpl<$Res>
 
 /// Create a copy of CheckoutEvent
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? product = null,Object? businessSetting = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? product = null,Object? businessSetting = null,Object? maxStock = null,}) {
   return _then(_AddToCart(
 product: null == product ? _self.product : product // ignore: cast_nullable_to_non_nullable
 as Product,businessSetting: null == businessSetting ? _self._businessSetting : businessSetting // ignore: cast_nullable_to_non_nullable
-as List<BusinessSettingRequestModel>,
+as List<BusinessSettingRequestModel>,maxStock: null == maxStock ? _self.maxStock : maxStock // ignore: cast_nullable_to_non_nullable
+as int,
   ));
 }
 

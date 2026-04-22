@@ -7,6 +7,7 @@ class CheckoutEvent with _$CheckoutEvent {
   const factory CheckoutEvent.addToCart({
     required Product product,
     required List<BusinessSettingRequestModel> businessSetting,
+    required int maxStock,
   }) = _AddToCart;
 
   //remove from cart

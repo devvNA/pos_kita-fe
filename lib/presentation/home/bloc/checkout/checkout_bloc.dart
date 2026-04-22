@@ -13,6 +13,10 @@ part 'checkout_bloc.freezed.dart';
 class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
   CheckoutBloc() : super(_Success([], 0, 0, 0, 0, 0)) {
     on<_AddToCart>((event, emit) {
+      if (event.maxStock <= 0) {
+        return;
+      }
+
       final product = event.product;
       final state = this.state as _Success;
       var products = [...state.cart];
@@ -22,6 +26,9 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       if (index == -1) {
         products.add(ProductQuantity(product: product, quantity: 1));
       } else {
+        if (products[index].quantity >= event.maxStock) {
+          return;
+        }
         products[index].quantity++;
       }
       final total = products.fold(

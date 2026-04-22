@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'colors.dart';
 
 /// Jago POS Design System - Shadows
-/// 
+///
 /// Uses tinted shadows (not pure black) for cohesive appearance.
 /// Shadows are layered for natural depth perception.
 
@@ -12,7 +12,7 @@ class AppShadows {
   // ============================================
   // ELEVATION SHADOWS - Tinted with primary
   // ============================================
-  
+
   /// No shadow
   static const List<BoxShadow> none = [];
 
@@ -84,7 +84,7 @@ class AppShadows {
   // ============================================
   // COLORED SHADOWS - For accents
   // ============================================
-  
+
   /// Primary shadow for CTA elements
   static List<BoxShadow> get primary => [
     BoxShadow(
@@ -120,7 +120,7 @@ class AppShadows {
   // ============================================
   // INSET SHADOWS - For inner depth
   // ============================================
-  
+
   /// Inner shadow for pressed states
   static List<BoxShadow> get inner => [
     BoxShadow(
@@ -133,7 +133,7 @@ class AppShadows {
   // ============================================
   // GLOW SHADOWS - For highlights
   // ============================================
-  
+
   /// Subtle glow for active states
   static List<BoxShadow> get glowPrimary => [
     BoxShadow(
@@ -154,7 +154,7 @@ class AppShadows {
   // ============================================
   // DECORATION HELPERS
   // ============================================
-  
+
   /// Card decoration with shadow
   static BoxDecoration card({
     Color? color,
@@ -209,10 +209,10 @@ class AppRadius {
   static const double full = 9999;
 
   // Semantic
-  static const double button = md;     // 12
-  static const double input = md;      // 12
-  static const double card = lg;       // 16
-  static const double chip = full;     // Pill
-  static const double badge = sm;      // 8
-  static const double modal = xl;      // 20
+  static const double button = md; // 12
+  static const double input = md; // 12
+  static const double card = lg; // 16
+  static const double chip = full; // Pill
+  static const double badge = sm; // 8
+  static const double modal = xl; // 20
 }
